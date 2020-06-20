@@ -48,7 +48,7 @@ bot.on('message', message => {
                 message.channel.send(embed);
             break;
         case 'rules':
-            message.channel.send(`Welcome to the **futurebound** Discord server! :jon_peacesign: \nServer link: https://discord.link/futurebound \n**Rules:** /n> ■ Do not spam /n> ■ No derogatory slurs/terms /n> ■ Be aware of the text channel topics /n> ■ Be considerate of others in voice channels /n> ■ Use the appropriate text channels when in a voice channel /n> ■ No inappropriate nicknames /n> ■ *be kind and respectful uwu* - anna /n /nMessage a @Moderator if you have any questions: /n@annaaa#0771  /n@CeoVortex#6620  /n@Edan / Waves#0209  /n@giosalad#0209  /n@CorgoAureo#8488  /n@wanderlust#0909 `);
+            message.channel.send(`Welcome to the **futurebound** Discord server! :jon_peacesign: \nServer link: https://discord.link/futurebound \n**Rules:** /n> ■ Do not spam /n> ■ No derogatory slurs/terms /n> ■ Be aware of the text channel topics /n> ■ Be considerate of others in voice channels /n> ■ Use the appropriate text channels when in a voice channel /n> ■ No inappropriate nicknames /n> ■ *be kind and respectful uwu* - anna /n /nMessage a @Moderator if you have any questions: /n <@617075082564730880>  /n@CeoVortex#6620  /n@Edan / Waves#0209  /n@giosalad#0209  /n@CorgoAureo#8488  /n@wanderlust#0909 `);
             break;
     }
 })
