@@ -49,10 +49,8 @@ bot.on('message', message => {
             break;
         case 'rules':
             //const jon = bot.emojis.get("655848045287571456")
-            message.channel.send(`Welcome to the **futurebound** Discord server!
-            \nServer link: https://discord.link/futurebound 
-            \n **Rules:** 
-            > ■ Do not spam 
+            message.channel.send(`Welcome to the **futurebound** Discord server! \nServer link: https://discord.link/futurebound 
+            \n **Rules:** \n > ■ Do not spam 
             > ■ No derogatory slurs/terms 
             > ■ Be aware of the text channel topics 
             > ■ Be considerate of others in voice channels 
@@ -60,8 +58,7 @@ bot.on('message', message => {
             > ■ No inappropriate nicknames 
             > ■ *be kind and respectful uwu* - anna 
             \n
-            \nMessage a @Moderator if you have any questions: 
-            <@617075082564730880>  
+            \nMessage a @Moderator if you have any questions: \n <@617075082564730880>  
             <@166755438707212289>  
             <@190533083341127681> 
             <@201917777185865729>  
