@@ -34,7 +34,7 @@ bot.on('message', message => {
             break;
         case 'clear':
             if(!args[1])
-                return message.reply('ERROR: please define a second argument.')
+                return message.reply('ERROR: please define a second argument (How many messages will be deleted? ex: $clear 3).')
             message.channel.bulkDelete(args[1]);
             break;
 
@@ -48,7 +48,8 @@ bot.on('message', message => {
                 message.channel.send(embed);
             break;
         case 'rules':
-            message.channel.send(`Welcome to the **futurebound** Discord server! :jon_peacesign: \nServer link: https://discord.link/futurebound \n**Rules:** /n> ■ Do not spam /n> ■ No derogatory slurs/terms /n> ■ Be aware of the text channel topics /n> ■ Be considerate of others in voice channels /n> ■ Use the appropriate text channels when in a voice channel /n> ■ No inappropriate nicknames /n> ■ *be kind and respectful uwu* - anna /n /nMessage a @Moderator if you have any questions: /n <@617075082564730880>  /n@CeoVortex#6620  /n@Edan / Waves#0209  /n@giosalad#0209  /n@CorgoAureo#8488  /n@wanderlust#0909 `);
+            const jon = client.emojis.get("655848045287571456")
+            message.channel.send(`Welcome to the **futurebound** Discord server! ${jon} \n Server link: https://discord.link/futurebound \n **Rules:** \n > ■ Do not spam \n > ■ No derogatory slurs/terms \n > ■ Be aware of the text channel topics \n > ■ Be considerate of others in voice channels \n > ■ Use the appropriate text channels when in a voice channel \n > ■ No inappropriate nicknames \n > ■ *be kind and respectful uwu* - anna \n\n Message a @Moderator if you have any questions: \n <@617075082564730880>  \n <@166755438707212289>  \n <@190533083341127681> \n <@201917777185865729>  \n <@240634156650856448>  \n <@617075082564730880> `);
             break;
     }
 })
