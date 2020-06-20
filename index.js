@@ -48,7 +48,7 @@ bot.on('message', message => {
                 message.channel.send(embed);
             break;
         case 'rules':
-            const jon = bot.emojis.get("655848045287571456")
+            //const jon = bot.emojis.get("655848045287571456")
             message.channel.send(`Welcome to the **futurebound** Discord server! 
             \n Server link: https://discord.link/futurebound 
             \n **Rules:** 
