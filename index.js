@@ -21,6 +21,9 @@ bot.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
 
     switch(args[0]) {
+        case 'hello':
+            message.channel.send('hi guys x')
+            break;
         case 'mcmxcv':
             message.channel.send('https://mcmxcv.eu')
             break;
