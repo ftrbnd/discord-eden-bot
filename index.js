@@ -9,7 +9,6 @@ bot.on('ready', () => {
     console.log('This bot is online!');
 });
 
-
 bot.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
     if(!channel)
