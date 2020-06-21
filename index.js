@@ -38,10 +38,8 @@ bot.on('message', message => {
             // reacts
             // if an album is selected: removeAllRoles() except ServerBooster
             //      and then add the new role
-            if(message.content === "jon_high") {
-                const ayy = client.emojis.find(emoji => emoji.name === "jon_high");
-                message.reply(`${ayy} lmao`);
-             }
+            const ayy = client.emojis.find(emoji => emoji.name === "jon_high");
+            message.channel.send(`${ayy} lmao`);
             break;
         // case 'mcmxcv':
         //     message.channel.send('https://mcmxcv.eu')
