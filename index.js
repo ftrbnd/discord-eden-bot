@@ -6,6 +6,11 @@ const token = process.env.DISCORD_TOKEN;
 const prefix = process.env.PREFIX;
 
 bot.on('ready', () => {
+    bot.user.setActivity("to no future", {
+        type: "LISTENING",
+        url: "https://open.spotify.com/track/2nBwC0sBIO4xiZEsOCRb7N?si=C6XhCRbpSIGHMg1SqAiMxw"
+    });
+
     console.log('This bot is now online!');
 });
 
