@@ -38,34 +38,8 @@ bot.on('message', message => {
             // reacts
             // if an album is selected: removeAllRoles() except ServerBooster
             //      and then add the new role
-            const ayy = bot.emojis.get("704982349305348107");
-            message.channel.send(`${ayy} lmao`);
+            message.channel.send('work in progress');
             break;
-        // case 'mcmxcv':
-        //     message.channel.send('https://mcmxcv.eu')
-        //     break;
-        // case 'albums':
-        //     if(args[1] === 'vertigo') {
-        //         message.channel.send('https://ftrbnd.co/vertigo')
-        //     }
-        //     else {
-        //         message.channel.send('Invalid argument.')
-        //     }
-        //     break;
-        // case 'clear':
-        //     if(!args[1])
-        //         return message.reply('ERROR: please define a second argument (How many messages will be deleted? ex: $clear 3).')
-        //     message.channel.bulkDelete(args[1]);
-        //     break;
-        // case 'embed':
-        //     const embed = new Discord.MessageEmbed()
-        //         .setTitle('User Information')
-        //         .setThumbnail(message.author.displayAvatarURL())
-        //         .addField('Username', message.author.username)
-        //         .addField('Favorite Album', message.guild.roles)
-        //         .setColor(0xf03200)
-        //         message.channel.send(embed);
-        //     break;
     }
 })
 
