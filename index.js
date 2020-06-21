@@ -37,6 +37,11 @@ bot.on('message', message => {
             \n **Rules:** \n> ■ Do not spam \n > ■ No derogatory slurs/terms \n > ■ Be aware of the text channel topics \n > ■ Be considerate of others in voice channels \n > ■ Use the appropriate text channels when in a voice channel \n > ■ No inappropriate nicknames \n > ■ \"*be kind and respectful uwu*\" - anna 
             \nMessage a <@&691882703674540042> if you have any questions: \n <@617075082564730880> \n <@166755438707212289> \n <@190533083341127681> \n <@201917777185865729> \n <@326615547565441024> \n <@240634156650856448> `);
             break;
+            case 'clear':
+                if(!args[1])
+                    return message.reply('ERROR: please define a second argument.')
+                message.channel.bulkDelete(args[1]);
+                break;
         case 'roles':
             // "react with your favorite album/ep to add a color to your name"
             // list the 4 albums/eps
