@@ -23,9 +23,14 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => {
-    if (message.mentions.has(client.user)) {
-    //message.reply('hello x');
-    message.channel.send(`${message.author} hello x`);
+    if(message.mentions.has(client.user)) { //if the bot is mentioned
+        //if message contains hello, hi, or hey
+        if(message.content.includes('hey') || message.content.includes('hi') || message.content.includes('hello')) {
+            message.channel.send(`${message.author} hello x`);
+        }
+        else if(message.content.includes('love')) {
+            message.channel.send(`${message.author} i love you too x`);
+        }
 }
 });
 
