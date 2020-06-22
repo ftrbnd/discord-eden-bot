@@ -23,7 +23,7 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => {
-    if (message.isMentioned(client.user)) {
+    if (message.mentions.has(client.user)) {
     message.reply('hello x');
 }
 });
