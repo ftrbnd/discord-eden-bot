@@ -1,12 +1,12 @@
 require('dotenv').config();
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+const client = new Discord.Client();
 
 const token = process.env.DISCORD_TOKEN;
 const prefix = process.env.PREFIX;
 
-bot.on('ready', () => {
-    bot.user.setActivity("no future", {
+client.on('ready', () => {
+    client.user.setActivity("no future", {
         type: "LISTENING",
         url: "https://open.spotify.com/track/2nBwC0sBIO4xiZEsOCRb7N?si=C6XhCRbpSIGHMg1SqAiMxw"
     });
@@ -14,7 +14,7 @@ bot.on('ready', () => {
     console.log('This bot is now online!');
 });
 
-bot.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
     if(!channel)
         return;
@@ -22,7 +22,13 @@ bot.on('guildMemberAdd', member => {
     channel.send(`Welcome to the **futurebound** server, ${member}! \nIf you have a favorite album/EP, go to <#702231983853666335> and a color will be added to your name :)`)
 });
 
-bot.on('message', message => {
+client.on('hey', message => {
+    if (message.isMentioned(client.user)) {
+    message.reply('hello x');
+}
+});
+
+client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" ");
 
     switch(args[0]) {
@@ -53,4 +59,4 @@ bot.on('message', message => {
     }
 })
 
-bot.login();
+client.login();
