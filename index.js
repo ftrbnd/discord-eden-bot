@@ -36,7 +36,7 @@ client.on('message', message => {
         else if(message.content.includes('sex') || message.content.includes('catching feelings')) {
             message.channel.send(`catching feelings > sex`);
         }
-        else if(message.content.includes('party')) {
+        else if(message.content.includes('listening') || message.content.includes('party') || message.content.includes('listening party')) {
             message.channel.send(`${message.author} next listening party: **july 4**, check <#713128726413443102>, hope to see you there x`);
         }
         else {
