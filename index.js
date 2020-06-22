@@ -22,7 +22,7 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcome to the **futurebound** server, ${member}! \nIf you have a favorite album/EP, go to <#702231983853666335> and a color will be added to your name :)`)
 });
 
-client.on('hey', message => {
+client.on('message', message => {
     if (message.isMentioned(client.user)) {
     message.reply('hello x');
 }
