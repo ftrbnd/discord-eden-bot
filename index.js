@@ -30,6 +30,9 @@ client.on('message', message => {
         else if(message.content.includes('love')) {
             message.channel.send(`${message.author} i love you too x`);
         }
+        else if(message.content.includes('grape')) {
+            message.channel.send(`${message.author} shut up you grape lookin slut`);
+        }
         else if(message.content.includes('sex') || message.content.includes('catching feelings')) {
             message.channel.send(`catching feelings > sex`);
         }
