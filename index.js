@@ -25,7 +25,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', message => {
     if (message.mentions.has(client.user)) {
     //message.reply('hello x');
-    message.channel.send(`${msg.author} hello x`);
+    message.channel.send(`${message.author} hello x`);
 }
 });
 
