@@ -30,8 +30,8 @@ client.on('message', message => {
         else if(message.content.includes('love')) {
             message.channel.send(`${message.author} i love you too x`);
         }
-        else if(message.content.includes('sex')) {
-            message.channel.send(`${message.author} i love you too x`);
+        else if(message.content.includes('sex') || message.content.includes('catching feelings')) {
+            message.channel.send(`catching feelings > sex`);
         }
         else {
             message.channel.send(`${message.author} hi`); // simple 'hi' if just mentioned
