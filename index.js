@@ -31,6 +31,9 @@ client.on('message', message => {
         if(message.content.includes('hey') || message.content.includes('hi') || message.content.includes('hello')) {
             message.channel.send(`${message.author} hello x`);
         }
+        else if(message.content.includes('sex') || message.content.includes('catching feelings')) {
+            message.channel.send(`catching feelings > sex`);
+        }
         else if(message.content.includes('love')) {
             message.channel.send(`${message.author} i love you too x`);
         }
@@ -42,9 +45,6 @@ client.on('message', message => {
         }
         else if(message.content.includes('oh no')) {
             message.channel.send(`i think i'm catching feelings`);
-        }
-        else if(message.content.includes('sex') || message.content.includes('catching feelings')) {
-            message.channel.send(`catching feelings > sex`);
         }
         else if(message.content.includes('listening') || message.content.includes('party') || message.content.includes('listening party')) {
             message.channel.send(`next listening party: **july 4**, check <#713128726413443102>, hope to see you there x`);
