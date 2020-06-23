@@ -5,6 +5,10 @@ const client = new Discord.Client();
 const token = process.env.DISCORD_TOKEN;
 const prefix = process.env.PREFIX;
 
+// function emoji (id, message) {
+//     return message.guild.emojis.get(id).toString()
+// }
+
 client.on('ready', () => {
     client.user.setActivity("no future", {
         type: "LISTENING",
@@ -30,6 +34,9 @@ client.on('message', message => {
         else if(message.content.includes('love')) {
             message.channel.send(`${message.author} i love you too x`);
         }
+        else if(message.content.includes('miss you') || message.content.includes('miss u')) {
+            message.channel.send(`${message.author} i miss u 2 x`);
+        }
         else if(message.content.includes('grape')) {
             message.channel.send('🍇');
         }
@@ -49,7 +56,7 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
-    let args = message.content.substring(prefix.length).split(" ");
+    let args = message.content.substring(prefix.length).split(" "); // if prefix is used
 
     switch(args[0]) {
         // $rules has served its purpose
