@@ -10,9 +10,7 @@ const prefix = process.env.PREFIX;
 // }
 
 client.on('ready', () => {
-    const cold_feet = client.emojis.cache.get("725208054416539650");
-    
-    client.user.setActivity(`Cold Feet ${cold_feet}`, {
+    client.user.setActivity(`Cold Feet`, {
         type: "LISTENING",
         url: "https://open.spotify.com/track/64V0ryfWb55o8alGZdk65i"
     });
@@ -75,6 +73,9 @@ client.on('message', message => {
             //      and then add the new role
             message.channel.send('work in progress');
             break;
+        case 'cold_feet':
+            const cold_feet = client.emojis.cache.get("725208054416539650");
+            message.channel.send(`${cold_feet}`);
     }
 })
 
