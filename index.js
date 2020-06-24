@@ -26,7 +26,7 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcome to the **futurebound** server, ${member}! \nIf you have a favorite album/EP, go to <#702231983853666335> and a color will be added to your name :)`)
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     let args = message.content.substring(prefix.length).split(" "); // if prefix is used
 
     switch(args[0]) {
@@ -50,17 +50,46 @@ client.on('message', message => {
             const voiceChannel = message.member.voice.channel;
             if (!voiceChannel) {
                 const jon_gun = client.emojis.cache.get("720508944929390653")
-                return message.reply(`please join a voice channel first ${jon_gun}`);
+                return message.channel.send(`${message.author} please join a voice channel first ${jon_gun}`);
             }
 
-            voiceChannel.join().then(connection => {
-                const stream = ytdl(args[1], { filter: 'audioonly' });
-                const dispatcher = connection.play(stream);
-    
-                dispatcher.on('end', () => voiceChannel.leave());
-            });
+            const permissions = voiceChannel.permissionsFor(message.client.user);
+            if(!permissions.has('CONNECT')) {
+                return message.channel.send(`i can't connect to your voice channel, make sure i have the proper permissions`);
+            }
+            if(!permissions.has('SPEAK')) {
+                return message.channel.send(`i can't speak in this voice channel, make sure i have the proper permissions`);
+            }
 
-            process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
+            try {
+                var connection = await voiceChannel.join();
+            } catch (error) {
+                console.error(`i could not join the voice channel: ${error}`);
+                return message.channel.send(`i could not join the voice channel: ${error}`);
+            }
+
+            const dispatcher = connection.playStream(ytdl(args[1]))
+                .on('end', () => {
+                    console.log('song ended!');
+                    voiceChannel.leave();
+                })
+                .on('error', error => {
+                    console.error(error);
+                });
+            dispatcher.setVolumeLogarithmic(5 / 5 );
+
+            // voiceChannel.join().then(connection => {
+            //     const stream = ytdl(args[1], { filter: 'audioonly' });
+            //     const dispatcher = connection.play(stream);
+    
+            //     dispatcher.on('end', () => voiceChannel.leave());
+            // });
+
+            // process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
+            break;
+        case 'stop':
+            if(!message.member.voiceChannel) return message.channel.send(`you are not in a voice channel`)
+            message.member.voiceChannel.leave();
             break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
@@ -80,7 +109,7 @@ client.on('message', message => {
         else if(message.content.includes('sex') || message.content.includes('catching feelings')) {
             message.channel.send(`catching feelings > sex`);
         }
-        else if(message.content.includes('love')) {
+        else if(message.content.includes('love') || message.content.includes('ily')) {
             message.channel.send(`${message.author} i love you too x`);
         }
         else if(message.content.includes('miss you') || message.content.includes('miss u')) {
