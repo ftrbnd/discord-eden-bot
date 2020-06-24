@@ -2,12 +2,14 @@ require('dotenv').config();
 
 const Discord = require('discord.js');
 const ytdl =  require('ytdl-core');
+const { Player } = require('erela.js');
 
 const client = new Discord.Client();
 
 const token = process.env.DISCORD_TOKEN;
 const prefix = process.env.PREFIX;
 
+var servers = {};
 
 client.on('ready', () => {
     client.user.setActivity(`Cold Feet`, {
@@ -45,52 +47,62 @@ client.on('message', async message => {
             message.channel.send('work in progress');
             break;
         case 'p':
-            if (message.channel.type !== 'text') return;
-
-            const voiceChannel = message.member.voice.channel;
-            if (!voiceChannel) {
-                const jon_gun = client.emojis.cache.get("720508944929390653")
-                return message.channel.send(`${message.author} please join a voice channel first ${jon_gun}`);
-            }
-
-            const permissions = voiceChannel.permissionsFor(message.client.user);
-            if(!permissions.has('CONNECT')) {
-                return message.channel.send(`i can't connect to your voice channel, make sure i have the proper permissions`);
-            }
-            if(!permissions.has('SPEAK')) {
-                return message.channel.send(`i can't speak in this voice channel, make sure i have the proper permissions`);
-            }
-
-            try {
-                var connection = await voiceChannel.join();
-            } catch (error) {
-                console.error(`i could not join the voice channel: ${error}`);
-                return message.channel.send(`i could not join the voice channel: ${error}`);
-            }
-
-            const stream = ytdl(args[1], { filter: 'audioonly'});
-            const dispatcher = connection.play(stream)
-                .on('end', () => {
-                    console.log('song ended!');
-                    voiceChannel.leave();
+            function play(connection, message) {
+                var server = servers[message.guild.id];
+                server.dispatcher = connection.playStream(ytdl(server.queue[0], {filter: "audioonly"}));
+                
+                server.queue.shift();
+                server.dispatcher.on('end', function() {
+                    if(server.queue[0]) {
+                        play(connection, message);
+                    } else {
+                        connection.diconnect();
+                    }
                 })
-                .on('error', error => {
-                    console.error(error);
-                });
-            //dispatcher.setVolumeLogarithmic(5 / 5 );
+            }
 
-            // voiceChannel.join().then(connection => {
-            //     const stream = ytdl(args[1], { filter: 'audioonly' });
-            //     const dispatcher = connection.play(stream);
-    
-            //     dispatcher.on('end', () => voiceChannel.leave());
-            // });
 
-            // process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
+            if(!args[1]) {
+                message.channel.send("you need to provide a link!");
+                return;
+            }
+            if(!message.member.voiceChannel) {
+                message.channel.send(`${message.author} you must be in a voice channel`)
+                return;
+            }
+
+            if(!servers[message.guild.id]) servers[message.guild.id] = {
+                queue: []
+            }
+
+            var server = servers[message.guild.id];
+
+            server.queue.push(args[1]);
+
+            if(!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection){
+                play(connection, message);
+            })
+
+            break;
+        case 'skip':
+            var server = servers[message.guild.id];
+            if(server.dispatcher) server.dispatcher.end();
+            message.channel.send('skipping the song')
+
             break;
         case 'stop':
-            if(!voiceChannel) return message.channel.send(`${message.author} you are not in a voice channel`)
-            message.member.voiceChannel.leave();
+            var server = servers[message.guild.id];
+            if(message.guild.voiceChannel) {
+                for(var i = server.queue.length - 1; i >= 0; i--) {
+                    server.queue.splie(i, 1);
+                }
+
+                server.dispatcher.end();
+                console.log('stopped the queue');
+                message.channel.send('ending the queue & leaving the voice channel');
+            }
+            if(message.guild.connection) message.guild.voiceConnection.disconnect();
+
             break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
