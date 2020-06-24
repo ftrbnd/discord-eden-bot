@@ -10,7 +10,9 @@ const prefix = process.env.PREFIX;
 // }
 
 client.on('ready', () => {
-    client.user.setActivity("Cold Feet", {
+    const cold_feet = client.emojis.cache.get("725208054416539650");
+    
+    client.user.setActivity(`Cold Feet ${cold_feet}`, {
         type: "LISTENING",
         url: "https://open.spotify.com/track/64V0ryfWb55o8alGZdk65i"
     });
