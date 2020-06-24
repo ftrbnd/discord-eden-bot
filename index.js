@@ -1,7 +1,10 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
+const ytdl =  require(ytdl-core);
+
 const client = new Discord.Client();
+
 const token = process.env.DISCORD_TOKEN;
 const prefix = process.env.PREFIX;
 
@@ -40,6 +43,23 @@ client.on('message', message => {
             // if an album is selected: removeAllRoles() except ServerBooster
             //      and then add the new role
             message.channel.send('work in progress');
+            break;
+        case 'p':
+            if (message.channel.type !== 'text') return;
+
+            const voiceChannel = message.member.voice.channel;
+            if (!voiceChannel) {
+                const jon_gun = client.emojis.cache.get("720508944929390653")
+                return message.reply(`${message.author} please join a voice channel first ${jon_gun}`);
+            }
+
+            voiceChannel.join().then(connection => {
+                const stream = ytdl('https://www.youtube.com/watch?v=D57Y1PruTlw', { filter: 'audioonly' });
+                const dispatcher = connection.play(stream);
+    
+                dispatcher.on('end', () => voiceChannel.leave());
+            });
+            
             break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
