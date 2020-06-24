@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
-const ytdl =  require(ytdl-core);
+const ytdl =  require('ytdl-core');
 
 const client = new Discord.Client();
 
@@ -59,7 +59,7 @@ client.on('message', message => {
     
                 dispatcher.on('end', () => voiceChannel.leave());
             });
-            
+
             break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
