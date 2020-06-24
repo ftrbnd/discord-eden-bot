@@ -10,7 +10,7 @@ const prefix = process.env.PREFIX;
 // }
 
 client.on('ready', () => {
-    client.user.setActivity("no future", {
+    client.user.setActivity("Cold Feet", {
         type: "LISTENING",
         url: "https://open.spotify.com/track/2nBwC0sBIO4xiZEsOCRb7N?si=C6XhCRbpSIGHMg1SqAiMxw"
     });
