@@ -100,7 +100,7 @@ client.on('message', async message => {
                 };
                 queue.set(message.guild.id, queueConstruct);
 
-                queueConstruct.songs.push(songs);
+                queueConstruct.songs.push(song);
                 try {
                     var connection = await voiceChannel.join();
                     queueConstruct.connection = connection;
