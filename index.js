@@ -89,7 +89,7 @@ client.on('message', async message => {
             // process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
             break;
         case 'stop':
-            if(!message.member.voiceChannel) return message.channel.send(`you are not in a voice channel`)
+            if(!voiceChannel) return message.channel.send(`${message.author} you are not in a voice channel`)
             message.member.voiceChannel.leave();
             break;
         case 'cold_feet':
