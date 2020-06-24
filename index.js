@@ -68,7 +68,8 @@ client.on('message', async message => {
                 return message.channel.send(`i could not join the voice channel: ${error}`);
             }
 
-            const dispatcher = connection.playStream(ytdl(args[1]))
+            const stream = ytdl(args[1], { filter: 'audioonly'});
+            const dispatcher = connection.play(stream)
                 .on('end', () => {
                     console.log('song ended!');
                     voiceChannel.leave();
@@ -76,7 +77,7 @@ client.on('message', async message => {
                 .on('error', error => {
                     console.error(error);
                 });
-            dispatcher.setVolumeLogarithmic(5 / 5 );
+            //dispatcher.setVolumeLogarithmic(5 / 5 );
 
             // voiceChannel.join().then(connection => {
             //     const stream = ytdl(args[1], { filter: 'audioonly' });
