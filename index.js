@@ -50,7 +50,7 @@ client.on('message', message => {
             const voiceChannel = message.member.voice.channel;
             if (!voiceChannel) {
                 const jon_gun = client.emojis.cache.get("720508944929390653")
-                return message.reply(`${message.author} please join a voice channel first ${jon_gun}`);
+                return message.reply(`please join a voice channel first ${jon_gun}`);
             }
 
             voiceChannel.join().then(connection => {
@@ -60,6 +60,7 @@ client.on('message', message => {
                 dispatcher.on('end', () => voiceChannel.leave());
             });
 
+            process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
             break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
