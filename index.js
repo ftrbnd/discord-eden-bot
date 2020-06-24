@@ -11,7 +11,7 @@ const prefix = process.env.PREFIX;
 const queue = new Map();
 
 function play(guild, song) {
-    const serverQueue = queue.get(guild.id);
+    const serverQueue = message.client.queue.get(message.guild.id);
 
     if(!song) {
         serverQueue.voiceChannel.leave();
@@ -83,7 +83,7 @@ client.on('message', async message => {
                 return message.channel.send(`i can't speak in this voice channel, make sure i have the proper permissions`);
             }
 
-            const songInfo =  await ytdl.getInfo(args[1]);
+            const songInfo = await ytdl.getInfo(args[1]);
             const song = {
                 title: songInfo.title,
                 url: songInfo.video_url
