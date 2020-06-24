@@ -18,6 +18,7 @@ function play(guild, song) {
         queue.delete(guild.id);
         return;
     }
+    console.log(serverQueue.songs);
 
     const stream = ytdl(song.url, { filter: 'audioonly'});
     const dispatcher = serverQueue.connection.play(stream)
@@ -48,7 +49,6 @@ client.on('guildMemberAdd', member => {
 
 client.on('message', async message => {
     let args = message.content.substring(prefix.length).split(" "); // if prefix is used
-
     const serverQueue = queue.get(message.guild.id);
 
     switch(args[0]) {
@@ -87,7 +87,8 @@ client.on('message', async message => {
             const song = {
                 title: songInfo.title,
                 url: songInfo.video_url
-            }
+            };
+
             if(!serverQueue) {
                 const queueConstruct = {
                     textChannel: message.channel,
@@ -103,7 +104,7 @@ client.on('message', async message => {
                 try {
                     var connection = await voiceChannel.join();
                     queueConstruct.connection = connection;
-                    play(message.guild, queue.songs[0]);
+                    play(message.guild, queueConstruct.songs[0]);
                 } catch (error) {
                     console.error(`i could not join the voice channel: ${error}`);
                     queue.delete(message.guild.id);
@@ -111,10 +112,11 @@ client.on('message', async message => {
                 }
             } else {
                 serverQueue.songs.push(song);
+                console.log(serverQueue.songs);
                 return message.channel.send(`**${song.title}** has been added to the queue`)
             }
 
-            process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
+            //process.on('unhandledRejection', error => console.error('Uncaught Promise Rejection', error));
             break;
         case 'skip':
             if(!voiceChannel) return message.channel.send(`${message.author} you are not in a voice channel`)
