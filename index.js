@@ -1,14 +1,11 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
-//const ytdl =  require('ytdl-core');
-
 const client = new Discord.Client();
 
 const TOKEN = process.env.DISCORD_TOKEN;
 const PREFIX = process.env.PREFIX;
 
-//var servers = {};
 
 client.on('ready', () => {
     client.user.setActivity(`Cold Feet`, {
@@ -19,6 +16,7 @@ client.on('ready', () => {
     console.log('This bot is now online!');
 });
 
+
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
     if(!channel)
@@ -27,40 +25,8 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcome to the **futurebound** server, ${member}! \nIf you have a favorite album/EP, go to <#702231983853666335> and a color will be added to your name :)`)
 });
 
+
 client.on('message', message => {
-    if (message.author.bot || !message.content.startsWith(PREFIX)) return; // if the command is from a bot or it doesn't start with the prefix
-    let args = message.content.substring(PREFIX.length).split(" "); // if prefix is used
-
-    switch(args[0]) {
-         case 'rules':
-             message.channel.send(`Welcome to the **futurebound** Discord server! \nServer link: https://discord.link/futurebound 
-             \n **Rules:** \n> ■ Do not spam \n > ■ No derogatory slurs/terms \n > ■ Be aware of the text channel topics \n > ■ Be considerate of others in voice channels \n > ■ Use the appropriate text channels when in a voice channel \n > ■ No inappropriate nicknames \n > ■ \"*be kind and respectful uwu*\" - anna 
-             \nMessage a <@&691882703674540042> if you have any questions: \n <@617075082564730880> \n <@166755438707212289> \n <@190533083341127681> \n <@201917777185865729> \n <@326615547565441024> \n <@240634156650856448> `);
-             break;
-        case 'roles':
-            // "react with your favorite album/ep to add a color to your name"
-            // list the 4 albums/eps
-            // reacts
-            // if an album is selected: removeAllRoles() except ServerBooster
-            //      and then add the new role
-            message.channel.send('work in progress');
-            break;
-        case 'cold_feet':
-            const cold_feet = client.emojis.cache.get("725208054416539650");
-            message.channel.send(`${cold_feet}`);
-            break;
-        case 'play':
-        case 'p':
-            message.channel.send('music player is currently a work in progress');
-            break;
-        case 'skip':
-            message.channel.send('music player is currently a work in progress');
-            break;
-        case 'stop':
-            message.channel.send('music player is currently a work in progress');
-            break;
-    }
-
     if(message.mentions.has(client.user)) { // if the bot is mentioned
         if(message.content.includes('good morning') || message.content.includes('morning')) {
             message.channel.send(`${message.author} GOOD MORNING`);
@@ -92,6 +58,39 @@ client.on('message', message => {
         else {
             message.channel.send(`${message.author} hi`); // simple 'hi' if just mentioned
         }
+    }
+
+    if (message.author.bot || !message.content.startsWith(PREFIX)) return; // if the command is from a bot or it doesn't start with the prefix
+    let args = message.content.substring(PREFIX.length).split(" "); // if prefix is used
+
+    switch(args[0]) {
+         case 'rules':
+             message.channel.send(`Welcome to the **futurebound** Discord server! \nServer link: https://discord.link/futurebound 
+             \n **Rules:** \n> ■ Do not spam \n > ■ No derogatory slurs/terms \n > ■ Be aware of the text channel topics \n > ■ Be considerate of others in voice channels \n > ■ Use the appropriate text channels when in a voice channel \n > ■ No inappropriate nicknames \n > ■ \"*be kind and respectful uwu*\" - anna 
+             \nMessage a <@&691882703674540042> if you have any questions: \n <@617075082564730880> \n <@166755438707212289> \n <@190533083341127681> \n <@201917777185865729> \n <@326615547565441024> \n <@240634156650856448> `);
+             break;
+        case 'roles':
+            // "react with your favorite album/ep to add a color to your name"
+            // list the 4 albums/eps
+            // reacts
+            // if an album is selected: removeAllRoles() except ServerBooster
+            //      and then add the new role
+            message.channel.send('work in progress');
+            break;
+        case 'cold_feet':
+            const cold_feet = client.emojis.cache.get("725208054416539650");
+            message.channel.send(`${cold_feet}`);
+            break;
+        case 'play':
+        case 'p':
+            message.channel.send('music player is currently a work in progress');
+            break;
+        case 'skip':
+            message.channel.send('music player is currently a work in progress');
+            break;
+        case 'stop':
+            message.channel.send('music player is currently a work in progress');
+            break;
     }
 });
 
