@@ -61,16 +61,14 @@ client.on('message', async message => {
                 })
             }
 
-
             if(!args[1]) {
                 message.channel.send("you need to provide a link!");
                 return;
             }
             if(!message.member.voice.channel){
-                message.channel.send("you're not in a voice channel!");
+                message.channel.send("you aree not in a voice channel!");
                 return;
             }
-
             if(!servers[message.guild.id]) servers[message.guild.id] = {
                 queue: []
             }
@@ -92,7 +90,7 @@ client.on('message', async message => {
             break;
         case 'stop':
             var server = servers[message.guild.id];
-            if(message.guild.voiceChannel) {
+            if(message.guild.voice.channel) {
                 for(var i = server.queue.length - 1; i >= 0; i--) {
                     server.queue.splie(i, 1);
                 }
