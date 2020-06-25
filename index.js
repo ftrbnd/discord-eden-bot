@@ -28,7 +28,7 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcome to the **futurebound** server, ${member}! \nIf you have a favorite album/EP, go to <#702231983853666335> and a color will be added to your name :)`)
 });
 
-client.on('message', async message => {
+client.on('message', message => {
     let args = message.content.substring(prefix.length).split(" "); // if prefix is used
 
     switch(args[0]) {
