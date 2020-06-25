@@ -1,15 +1,14 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
-const ytdl =  require('ytdl-core');
-const { Player } = require('erela.js');
+//const ytdl =  require('ytdl-core');
 
 const client = new Discord.Client();
 
-const token = process.env.DISCORD_TOKEN;
-const prefix = process.env.PREFIX;
+const TOKEN = process.env.DISCORD_TOKEN;
+const PREFIX = process.env.PREFIX;
 
-var servers = {};
+//var servers = {};
 
 client.on('ready', () => {
     client.user.setActivity(`Cold Feet`, {
@@ -29,15 +28,15 @@ client.on('guildMemberAdd', member => {
 });
 
 client.on('message', message => {
-    let args = message.content.substring(prefix.length).split(" "); // if prefix is used
+    if (message.author.bot || !message.content.startsWith(PREFIX)) return; // if the command is from a bot or it doesn't start with the prefix
+    let args = message.content.substring(PREFIX.length).split(" "); // if prefix is used
 
     switch(args[0]) {
-        // $rules has served its purpose
-        // case 'rules':
-        //     message.channel.send(`Welcome to the **futurebound** Discord server! \nServer link: https://discord.link/futurebound 
-        //     \n **Rules:** \n> ■ Do not spam \n > ■ No derogatory slurs/terms \n > ■ Be aware of the text channel topics \n > ■ Be considerate of others in voice channels \n > ■ Use the appropriate text channels when in a voice channel \n > ■ No inappropriate nicknames \n > ■ \"*be kind and respectful uwu*\" - anna 
-        //     \nMessage a <@&691882703674540042> if you have any questions: \n <@617075082564730880> \n <@166755438707212289> \n <@190533083341127681> \n <@201917777185865729> \n <@326615547565441024> \n <@240634156650856448> `);
-        //     break;
+         case 'rules':
+             message.channel.send(`Welcome to the **futurebound** Discord server! \nServer link: https://discord.link/futurebound 
+             \n **Rules:** \n> ■ Do not spam \n > ■ No derogatory slurs/terms \n > ■ Be aware of the text channel topics \n > ■ Be considerate of others in voice channels \n > ■ Use the appropriate text channels when in a voice channel \n > ■ No inappropriate nicknames \n > ■ \"*be kind and respectful uwu*\" - anna 
+             \nMessage a <@&691882703674540042> if you have any questions: \n <@617075082564730880> \n <@166755438707212289> \n <@190533083341127681> \n <@201917777185865729> \n <@326615547565441024> \n <@240634156650856448> `);
+             break;
         case 'roles':
             // "react with your favorite album/ep to add a color to your name"
             // list the 4 albums/eps
@@ -46,65 +45,20 @@ client.on('message', message => {
             //      and then add the new role
             message.channel.send('work in progress');
             break;
-        case 'p':
-            function play(connection, message) {
-                var server = servers[message.guild.id];
-                server.dispatcher = connection.play(ytdl(server.queue[0], {filter: "audioonly"}));
-                
-                server.queue.shift();
-                server.dispatcher.on('end', function() {
-                    if(server.queue[0]) {
-                        play(connection, message);
-                    } else {
-                        connection.diconnect();
-                    }
-                })
-            }
-
-            if(!args[1]) {
-                message.channel.send("you need to provide a link!");
-                return;
-            }
-            if(!message.member.voice.channel){
-                message.channel.send("you are not in a voice channel!");
-                return;
-            }
-            if(!servers[message.guild.id]) servers[message.guild.id] = {
-                queue: []
-            }
-
-            var server = servers[message.guild.id];
-
-            server.queue.push(args[1]);
-
-            if(!message.guild.voiceConnection) message.member.voice.channel.join().then(function(connection){
-                play(connection, message);
-            })
-
-            break;
-        case 'skip':
-            var server = servers[message.guild.id];
-            if(server.dispatcher) server.dispatcher.end();
-            message.channel.send('skipping the song')
-
-            break;
-        case 'stop':
-            var server = servers[message.guild.id];
-            if(message.guild.voice.channel) {
-                for(var i = server.queue.length - 1; i >= 0; i--) {
-                    server.queue.splie(i, 1);
-                }
-
-                server.dispatcher.end();
-                console.log('stopped the queue');
-                message.channel.send('ending the queue & leaving the voice channel');
-            }
-            if(message.guild.connection) message.guild.voiceConnection.disconnect();
-
-            break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
             message.channel.send(`${cold_feet}`);
+            break;
+        case 'play':
+        case 'p':
+            message.channel.send('music player is currently a work in progress');
+            break;
+        case 'skip':
+            message.channel.send('music player is currently a work in progress');
+            break;
+        case 'stop':
+            message.channel.send('music player is currently a work in progress');
+            break;
     }
 
     if(message.mentions.has(client.user)) { // if the bot is mentioned
