@@ -66,7 +66,7 @@ client.on('message', message => {
                 return;
             }
             if(!message.member.voice.channel){
-                message.channel.send("you aree not in a voice channel!");
+                message.channel.send("you are not in a voice channel!");
                 return;
             }
             if(!servers[message.guild.id]) servers[message.guild.id] = {
