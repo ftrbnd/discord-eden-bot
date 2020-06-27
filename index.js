@@ -82,9 +82,9 @@ client.on('message', message => {
         else if(message.content.includes('listening') || message.content.includes('party') || message.content.includes('listening party')) {
             message.channel.send(`next listening party: **july 4**, check <#713128726413443102>, hope to see you there x`);
         }
-        else if(message.content.includes('announcement')) {
-          message.channel.send('@everyone' + ' don\'t forget! the listening party is next week at 12pm pst. \njoin us 40 minutes early to listen to VÉRITÉ\'s set 👀');
-        }
+        // else if(message.content.includes('announcement')) {
+        //   message.channel.send('@everyone' + ' don\'t forget! the listening party is next week at 12pm pst. \njoin us 40 minutes early to listen to VÉRITÉ\'s set 👀');
+        // }
         else {
             // egg, peacesign, meep, high
             const emojis = ['704981741705625611', '655848045287571456', '724685754386612226', '655849255272972319']
