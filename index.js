@@ -8,9 +8,9 @@ const PREFIX = process.env.PREFIX;
 
 
 client.on('ready', () => {
-    client.user.setActivity(`Cold Feet`, {
+    client.user.setActivity(`no future`, {
         type: "LISTENING",
-        url: "https://open.spotify.com/track/64V0ryfWb55o8alGZdk65i"
+        url: "https://open.spotify.com/track/702GncAZXiEArIWBgaPJDi"
     });
 
     console.log('This bot is now online!');
@@ -34,7 +34,7 @@ client.on('message', message => {
             message.channel.send(`${message.author} ` + randomMessage);
         }
         else if(message.content.includes('good night') || message.content.includes('nini')) {
-            const messages = ['nini', 'night night', 'good night x', 'dont let the bed bugs bite'];
+            const messages = ['nini', 'night night', 'good night x', 'dont let the bed bugs bite x'];
             var randomMessage = messages[Math.floor(Math.random() * messages.length)];
             message.channel.send(`${message.author} ` + randomMessage);
         }
