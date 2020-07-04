@@ -109,7 +109,7 @@ client.on('message', message => {
             message.channel.send('work in progress');
             break;
         case 'announcement':
-            message.channel.send('@everyone' + ' listening party channels are now LIVE! VÉRITÉ\'s set will begin in ~20 minutes, and EDEN will follow soon after.);
+            message.channel.send('@everyone' + ' listening party channels are now LIVE! VÉRITÉ\'s set will begin in ~20 minutes, and EDEN will follow soon after.');
             break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
