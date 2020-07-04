@@ -13,7 +13,7 @@ client.on('ready', () => {
         url: "https://open.spotify.com/track/702GncAZXiEArIWBgaPJDi"
     });
 
-    console.log('This bot is now online!');
+    console.log(`${client.user.tag} is now online!`);
 });
 
 
@@ -108,9 +108,9 @@ client.on('message', message => {
             //      and then add the new role
             message.channel.send('work in progress');
             break;
-        // case 'announcement':
-        //     message.channel.send('@everyone' + ' don\'t forget! the listening party is next week at 12pm pst. \njoin us 40 minutes early to listen to VÉRITÉ\'s set 👀');
-        //     break;
+        case 'announcement':
+            message.channel.send('@everyone' + ' listening party channels are now LIVE! VÉRITÉ\'s set will begin in ~20 minutes, and EDEN will follow soon after.);
+            break;
         case 'cold_feet':
             const cold_feet = client.emojis.cache.get("725208054416539650");
             message.channel.send(`${cold_feet}`);
