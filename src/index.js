@@ -45,8 +45,8 @@ client.on('message', async function(message) {
         client.commands.get(cmdName).run(client, message, cmdArgs);
     }
     else {
-        console.log("command does not exist.")
-        message.channel.send("Command does not exist.");
+        //console.log("Command does not exist.");
+        message.channel.send("command does not exist.");
     }
 });
 
