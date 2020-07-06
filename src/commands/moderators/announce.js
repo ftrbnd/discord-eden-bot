@@ -1,9 +1,12 @@
 module.exports.run = async(client, message, args) => {
     if(message.member.roles.cache.has('691882703674540042')) { // Moderator
-        let announcement = message.content.substring(10); //length of command 'announce' + 2
+        let announcement = message.content.substring(10 + args[0].length); // length of command 'announce' + 2
 
-        const targetChannel = 'announcements'
+        console.log(args[0]); // name of channel
+
+        const targetChannel = args[0]
         let announcingChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === targetChannel)
+        args.shift();
         if(announcingChannel) {
             announcingChannel.send(announcement);
         }
