@@ -1,11 +1,15 @@
 require('dotenv').config();
 
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const fs = require('fs').promises;
+const path = require('path');
 
 const TOKEN = process.env.DISCORD_TOKEN;
 const PREFIX = process.env.PREFIX;
 
+const client = new Discord.Client();
+client.login(TOKEN);
+client.commands = new Map();
 
 client.on('ready', () => {
     client.user.setActivity(`no future`, {
@@ -16,7 +20,6 @@ client.on('ready', () => {
     console.log(`${client.user.tag} is now online!`);
 });
 
-
 client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
     if(!channel)
@@ -25,8 +28,7 @@ client.on('guildMemberAdd', member => {
     channel.send(`Welcome to the **futurebound** server, ${member}! \nIf you have a favorite album/EP, go to <#702231983853666335> and a color will be added to your name :)`)
 });
 
-
-client.on('message', message => {
+client.on('message', async function(message) {
     if(message.mentions.has(client.user)) { // if the bot is mentioned
         if(message.content.includes('good morning') || message.content.includes('morning')) {
             const messages = ['GOOD MORNING', 'good morning x', 'goooood morning', 'mornin'];
@@ -91,41 +93,41 @@ client.on('message', message => {
         }
     }
 
-    if (message.author.bot || !message.content.startsWith(PREFIX)) return; // if the command is from a bot or it doesn't start with the prefix
-    let args = message.content.substring(PREFIX.length).split(" "); // if prefix is used
+    if(message.author.bot) return;
+    if(!message.content.startsWith(PREFIX)) return;
 
-    switch(args[0]) {
-         case 'rules':
-             message.channel.send(`Welcome to the **futurebound** Discord server! \nServer link: https://discord.link/futurebound 
-             \n **Rules:** \n> ■ Do not spam \n > ■ No derogatory slurs/terms \n > ■ Be aware of the text channel topics \n > ■ Be considerate of others in voice channels \n > ■ Use the appropriate text channels when in a voice channel \n > ■ No inappropriate nicknames \n > ■ \"*be kind and respectful uwu*\" - anna 
-             \nMessage a <@&691882703674540042> if you have any questions: \n <@617075082564730880> \n <@166755438707212289> \n <@190533083341127681> \n <@201917777185865729> \n <@326615547565441024> \n <@240634156650856448> `);
-             break;
-        case 'roles':
-            // "react with your favorite album/ep to add a color to your name"
-            // list the 4 albums/eps
-            // reacts
-            // if an album is selected: removeAllRoles() except ServerBooster
-            //      and then add the new role
-            message.channel.send('work in progress');
-            break;
-        // case 'announcement':
-        //     message.channel.send('@everyone' + ' listening party channels are now LIVE! VÉRITÉ\'s set will begin in ~20 minutes, and EDEN will follow soon after.');
-        //     break;
-        case 'cold_feet':
-            const cold_feet = client.emojis.cache.get("725208054416539650");
-            message.channel.send(`${cold_feet}`);
-            break;
-        case 'play':
-        case 'p':
-            message.channel.send('music player is currently a work in progress');
-            break;
-        case 'skip':
-            message.channel.send('music player is currently a work in progress');
-            break;
-        case 'stop':
-            message.channel.send('music player is currently a work in progress');
-            break;
+    let cmdArgs = message.content.substring(message.content.indexOf(PREFIX)+1).split(new RegExp(/\s+/));
+    let cmdName = cmdArgs.shift();
+    //console.log(cmdName);
+    //console.log(cmdArgs);
+    if(client.commands.get(cmdName)) {
+        client.commands.get(cmdName).run(client, message, cmdArgs);
+    }
+    else {
+        console.log("Command does not exist.")
+        message.channel.send("Command does not exist.");
     }
 });
 
-client.login();
+// IIFE - immediately invoked function expression
+(async function registerCommands(dir = 'commands') {
+    // Read the directory/file
+    let files = await fs.readdir(path.join(__dirname, dir));
+    //console.log(files);
+    // Loop through each file
+    for(let file of files) {
+        let stat = await fs.lstat(path.join(__dirname, dir, file));
+        if(stat.isDirectory()) // If files is a directory, recursively call registerCommands
+            registerCommands(path.join(dir, file));
+        else {
+            // Check if the file is a .js file
+            if(file.endsWith(".js")) {
+                let cmdName = file.substring(0, file.indexOf(".js"));
+                let cmdModule = require(path.join(__dirname, dir, file));
+                client.commands.set(cmdName, cmdModule);
+                //console.log(client.commands);
+            }
+        }
+    }
+})()
+
