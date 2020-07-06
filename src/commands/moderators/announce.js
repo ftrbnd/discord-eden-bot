@@ -10,6 +10,9 @@ module.exports.run = async(client, message, args) => {
         if(announcingChannel) {
             announcingChannel.send(announcement);
         }
+        else {
+            message.channel.send('channel doesn\'t exist.');
+        }
     }
     else {
         message.channel.send('you do not have permission to use this command.');
