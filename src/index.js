@@ -36,7 +36,7 @@ client.on('guildMemberAdd', member => {
 client.on('message', async function(message) {
     if(message.author.bot) return; // ignore if it's a bot
 
-    if(message.mentions.has(client.user)) { // if the bot is mentioned
+    if(message.mentions.has(client.user) && !message.author.bot) { // if the bot is mentioned
         client.commands.get('mentions').run(client, message); 
     }
 
