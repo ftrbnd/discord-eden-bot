@@ -19,10 +19,10 @@ client.on('ready', () => {
 
     let announcingChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'test-commands')
     if(announcingChannel) {
-        announcingChannel.send(`${client.user.tag} is now online!`);
+        announcingChannel.send(`**${client.user.tag}** has restarted and is now online!`);
     }
     
-    console.log(`${client.user.tag} is now online!`);
+    console.log(`${client.user.tag} has restarted and is now online!`);
 });
 
 client.on('guildMemberAdd', member => {
