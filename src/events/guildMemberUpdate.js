@@ -19,7 +19,7 @@ module.exports = (client, oldMember, newMember) => {
                 .setFooter('futurebound', 'https://i.imgur.com/8TsEfzo.jpg')
                 .setTimestamp();
             
-            channel.send(`${member}`)
+            channel.send(`${member}`);
             channel.send(embed);
         }
         // else if the SERVER BOOSTER role is gone
