@@ -7,7 +7,7 @@ module.exports = (client, oldMember, newMember) => {
     
     if(oldMember.roles.cache.size !== newMember.roles.cache.size) {
         // check if they didn't have SERVER BOOSTER role before and did have it after
-        if(!oldMember.roles.cache.has('702225844113899591') && newMember.roles.cache.has('702225844113899591')) {
+        if(!oldMember.roles.cache.has('704966097434312766') && newMember.roles.cache.has('704966097434312766')) {
             newMember.roles.add('731688468366884934'); // 'futurebound' role
 
             const boostEmoji = client.emojis.cache.get('731696862460903534');
