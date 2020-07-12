@@ -23,7 +23,7 @@ module.exports = (client, oldMember, newMember) => {
             channel.send(embed);
         }
         // else if the SERVER BOOSTER role is gone
-        else if(oldMember.roles.cache.has('702225844113899591') && !newMember.roles.cache.has('702225844113899591')) {
+        else if(oldMember.roles.cache.has('704966097434312766') && !newMember.roles.cache.has('704966097434312766')) {
             newMember.roles.remove('731688468366884934'); // 'futurebound' role
         }
     }
