@@ -16,44 +16,23 @@ module.exports = async (client, message,) => {
     .setTimestamp(); // when the boost happened
 
     if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_3') {
-        if(!message.member.roles.cache.has('731688468366884934'))  { // if they don't have the futurebound role
-            message.member.roles.add('731688468366884934'); // add futurebound role
-            embed.setDescription(`They are now <@&731688468366884934>. \n**futurebound** has achieved **Level 3**!`);
-        }
-        else {
-            embed.setDescription(`futurebound has achieved **Level 3**!`);
-        }
+        embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 3**!`);
         welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
     else if (message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2') {
-        if(!message.member.roles.cache.has('731688468366884934'))  { // if they don't have the futurebound role
-            message.member.roles.add('731688468366884934'); // add futurebound role
-            embed.setDescription(`They are now <@&731688468366884934>. \n**futurebound** has achieved **Level 2**!`);
-        }
-        else {
-            embed.setDescription(`futurebound has achieved **Level 2**!`);
-        }
-        welcomeChannel.send(`${message.author}`);
+        embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 2**!`);
+        welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
     else if (message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1') {
-        if(!message.member.roles.cache.has('731688468366884934'))  { // if they don't have the futurebound role
-            message.member.roles.add('731688468366884934'); // add futurebound role
-            embed.setDescription(`They are now <@&731688468366884934>. \n**futurebound** has achieved **Level 1**!`);
-        }
-        else {
-            embed.setDescription(`futurebound has achieved **Level 1**!`);
-        }
-        welcomeChannel.send(`${message.author}`);
+        embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 1**!`);
+        welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
     else if (message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION') {
-        if(!message.member.roles.cache.has('731688468366884934'))  { // if they don't have the futurebound role
-            message.member.roles.add('731688468366884934'); // add futurebound role
-            embed.setDescription(`They are now <@&731688468366884934>.`);
-        }
-        welcomeChannel.send(`${message.author}`);
+        embed.setDescription(`They are <@&704966097434312766>.`);
+        welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
 
