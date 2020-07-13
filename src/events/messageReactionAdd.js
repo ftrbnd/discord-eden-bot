@@ -1,11 +1,6 @@
 const Discord = require('discord.js');
 
 module.exports = async (client, reaction, user) => {
-    if(reaction.message.partial)  await reaction.message.fetch();
-    if(reaction.partial) await reaction.fetch();
-
-    if(user.bot) return;
-
     const modChannel = reaction.message.member.guild.channels.cache.find(channel => channel.name === "moderators");
     if(!modChannel)
         return;
