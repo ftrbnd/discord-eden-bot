@@ -20,22 +20,26 @@ module.exports = async (client, message,) => {
         welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
-    else if (message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2') {
+    else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2') {
         embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 2**!`);
         welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
-    else if (message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1') {
+    else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1') {
         embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 1**!`);
         welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
-    else if (message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION') {
+    else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION') {
         embed.setDescription(`They are <@&704966097434312766>.`);
         welcomeChannel.send(`${message.author}`); //message.author = User type
         welcomeChannel.send(embed);
     }
 
+    if(message.channel.name === 'suggestions') {
+        await message.react('👍');
+        await message.react('👎');
+    }
 
     if(message.mentions.has(client.user) && !message.author.bot) { // if the bot is mentioned and it's not by a bot
         client.commands.get('mentions').run(client, message); 
