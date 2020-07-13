@@ -6,7 +6,7 @@ module.exports = async (client, reaction, user) => {
         return;
 
     if (reaction.message.channel.name === 'suggestions' && reaction.emoji.name == '👍' && reaction.count % 10 === 0) {
-        const embed = new Discord.MessageEmbed()
+        const embed = new MessageEmbed()
             .setAuthor(reaction.message.member.displayName + `'s suggestion has received ${reaction.count} upvotes`, reaction.message.member.user.displayAvatarURL()) // message + their avatar
             .setColor(0xff7818) // orange
             .setDescription(reaction.message.content)

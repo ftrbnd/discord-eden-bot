@@ -8,7 +8,7 @@ module.exports = async (client, message,) => {
     if(!welcomeChannel)
         return;
 
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
     .setAuthor(message.member.displayName + ' just boosted the server!', message.member.user.displayAvatarURL()) // message + their avatar
     .setColor(0xf47fff) // pink boost color
     .setThumbnail('https://emoji.gg/assets/emoji/1819_boostingtop.gif') // nitro boost gif

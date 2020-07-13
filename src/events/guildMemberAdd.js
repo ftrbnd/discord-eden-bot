@@ -5,7 +5,7 @@ module.exports = (client, member) => {
     if(!channel)
         return;
     
-    const embed = new Discord.MessageEmbed()
+    const embed = new MessageEmbed()
         .setAuthor(member.displayName + ' just joined the server!', member.user.displayAvatarURL())
         .setColor(0x32ff25)
         .setThumbnail(member.user.displayAvatarURL())
