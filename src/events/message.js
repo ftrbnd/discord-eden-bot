@@ -1,4 +1,4 @@
-const Discord = require('discord.js');
+const {MessageEmbed} = require('discord.js');
 const PREFIX = process.env.PREFIX;
 
 module.exports = async (client, message,) => {
