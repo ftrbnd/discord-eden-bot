@@ -2,8 +2,6 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = async (client, reaction, user) => {
     const modChannel = reaction.message.member.guild.channels.cache.find(channel => channel.name === 'moderators');
-    if(!modChannel)
-        return;
     console.log('hello1');
     
     try {
