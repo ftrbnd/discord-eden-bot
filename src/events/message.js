@@ -36,10 +36,10 @@ module.exports = async (client, message,) => {
         welcomeChannel.send(embed);
     }
 
-    if(message.channel.name === 'suggestions') {
-        await message.react('👍');
-        await message.react('👎');
-    }
+    // if(message.channel.name === 'suggestions') {
+    //     await message.react('👍');
+    //     await message.react('👎');
+    // }
 
     if(message.mentions.has(client.user) && !message.author.bot) { // if the bot is mentioned and it's not by a bot
         client.commands.get('mentions').run(client, message); 
