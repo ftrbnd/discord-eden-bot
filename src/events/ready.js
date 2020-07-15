@@ -1,7 +1,7 @@
 module.exports = (client) => {
     client.user.setActivity(`no future`, {
-        type: "LISTENING",
-        url: "https://open.spotify.com/track/702GncAZXiEArIWBgaPJDi"
+        type: "Stingray",
+        url: "https://open.spotify.com/album/7HDfpCVCVM5nlR5blLX3E8"
     });
 
     let announcingChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'test-commands')
