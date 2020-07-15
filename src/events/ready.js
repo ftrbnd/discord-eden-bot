@@ -1,6 +1,6 @@
 module.exports = (client) => {
-    client.user.setActivity(`no future`, {
-        type: "Stingray",
+    client.user.setActivity(`Stingray`, {
+        type: "LISTENING",
         url: "https://open.spotify.com/album/7HDfpCVCVM5nlR5blLX3E8"
     });
 
