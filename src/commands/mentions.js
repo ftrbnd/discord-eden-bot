@@ -1,10 +1,10 @@
 module.exports.run = async(client, message) => {
-    if(message.content.includes('good morning') || message.content.includes('morning')) {
+    if(message.content.includes('good morning') || message.content.includes('morning') || message.content.includes('gm')) {
         const messages = ['GOOD MORNING', 'good morning x', 'goooood morning', 'mornin'];
         var randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.channel.send(`${message.author} ` + randomMessage);
     }
-    else if(message.content.includes('good night') || message.content.includes('nini')) {
+    else if(message.content.includes('good night') || message.content.includes('goodnight') || message.content.includes('nini') || message.content.includes('gn') || message.content.includes('night')) {
         const messages = ['nini', 'night night', 'good night x', 'dont let the bed bugs bite x'];
         var randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.channel.send(`${message.author} ` + randomMessage);
@@ -57,7 +57,9 @@ module.exports.run = async(client, message) => {
         // egg, peacesign, meep, high
         const emojis = ['704981741705625611', '655848045287571456', '724685754386612226', '655849255272972319']
         var randomIndex = emojis[Math.floor(Math.random() * emojis.length)];
+        console.log(randomIndex);
         const emoji = client.emojis.cache.get(randomIndex);
-        message.channel.send(`${emoji}`);
+        message.channel.send(`${emoji}`)
+            .then(message => message.delete({ timeout : 3000 }));;
     }
 }
