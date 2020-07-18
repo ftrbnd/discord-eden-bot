@@ -36,10 +36,6 @@ module.exports = async (client, message,) => {
         welcomeChannel.send(embed);
     }
 
-    // if(message.channel.name === 'suggestions') {
-    //     await message.react('👍');
-    //     await message.react('👎');
-    // }
 
     if(message.mentions.has(client.user) && !message.author.bot) { // if the bot is mentioned and it's not by a bot
         client.commands.get('mentions').run(client, message); 
@@ -55,7 +51,9 @@ module.exports = async (client, message,) => {
         client.commands.get(cmdName).run(client, message, cmdArgs);
     }
     else {
-        //console.log("Command does not exist.");
-        message.channel.send("command does not exist.");
+        const errEmbed = new MessageEmbed()
+            .setDescription('command does not exist.')
+            .setColor(0xdf0000);
+        message.channel.send(errEmbed);
     }
 }

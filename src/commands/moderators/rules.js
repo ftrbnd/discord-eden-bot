@@ -5,6 +5,9 @@ module.exports.run = async(client, message, args) => {
         \nMessage a <@&691882703674540042> if you have any questions: \n <@617075082564730880> \n <@166755438707212289> \n <@190533083341127681> \n <@201917777185865729> \n <@326615547565441024> \n <@240634156650856448> `);
     }
     else {
-        message.channel.send('you do not have permission to use this command.');
+        const perms = new MessageEmbed()
+            .setDescription('you do not have permission to use this command.')
+            .setColor(0xdf0000);
+        message.channel.send(perms);
     }
 }

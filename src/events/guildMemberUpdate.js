@@ -4,6 +4,9 @@ module.exports = (client, oldMember, newMember) => {
         return;
     
     if(oldMember.roles.cache.has('704966097434312766') && !newMember.roles.cache.has('704966097434312766')) {
-        channel.send(`${newMember}'s server boost has left the server.`)
+        const errEmbed = new MessageEmbed()
+            .setDescription(`${newMember}'s server boost has left the server.`)
+            .setColor(0xdf0000);
+        channel.send(errEmbed);
     }
 }
