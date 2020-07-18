@@ -1,3 +1,5 @@
+const {MessageEmbed} = require('discord.js');
+
 module.exports = (client) => {
     client.user.setActivity(`New World Tapes`, {
         type: "LISTENING",
