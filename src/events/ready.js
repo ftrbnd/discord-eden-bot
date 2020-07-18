@@ -1,5 +1,5 @@
 module.exports = (client) => {
-    client.user.setActivity(`Stingray`, {
+    client.user.setActivity(`New World Tapes`, {
         type: "LISTENING",
         url: "https://open.spotify.com/album/7HDfpCVCVM5nlR5blLX3E8"
     });
