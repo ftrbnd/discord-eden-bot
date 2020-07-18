@@ -7,7 +7,7 @@ module.exports.run = async(client, message, args) => {
             const errEmbed = new MessageEmbed()
                 .setDescription('you didn\'t mention anyone.')
                 .setColor(0xdf0000);
-            message.channel.send(errEmbed);
+            return message.channel.send(errEmbed);
         }
 
         var member;
@@ -22,7 +22,7 @@ module.exports.run = async(client, message, args) => {
             const errEmbed = new MessageEmbed()
                 .setDescription('they aren\'t in the server!')
                 .setColor(0xdf0000);
-            message.channel.send(errEmbed);
+            return message.channel.send(errEmbed);
         }
 
         var reason = args.slice(1).join(' ');
@@ -30,7 +30,7 @@ module.exports.run = async(client, message, args) => {
             const errEmbed = new MessageEmbed()
                 .setDescription('a reason must be given.')
                 .setColor(0xdf0000);
-            message.channel.send(errEmbed);
+            return message.channel.send(errEmbed);
         }
 
         const modChannel = member.guild.channels.cache.find(channel => channel.name === "moderators");
