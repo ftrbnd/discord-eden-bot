@@ -8,11 +8,6 @@ const path = require('path');
 const config = require('./config.js');
 
 const TOKEN = process.env.DISCORD_TOKEN;
-const PREFIX = process.env.PREFIX;
-const consumer_key = process.env.CONSUMER_KEY;
-const consumer_secret = process.env.CONSUMER_SECRET;
-const access_token = process.env.ACCESS_TOKEN;
-const access_token_secret = process.env.ACCESS_TOKEN_SECRET;
 
 const client = new Discord.Client();
 client.login(TOKEN);
