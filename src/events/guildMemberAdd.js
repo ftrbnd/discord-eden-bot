@@ -13,6 +13,5 @@ module.exports = async (client, member) => {
         .setFooter('futurebound', 'https://i.imgur.com/8TsEfzo.jpg')
         .setTimestamp();
     
-    console.log(channel.name);
     channel.send(`${member}`, embed);
 }
