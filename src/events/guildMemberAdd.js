@@ -1,7 +1,7 @@
 const {MessageEmbed} = require('discord.js');
 
 module.exports = async (client, member) => {
-    const channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
+    const welcomeChannel = client.channels.fetch('655655073799471117'); // welcome channel ID
     if(!channel)
         return;
     
@@ -13,5 +13,5 @@ module.exports = async (client, member) => {
         .setFooter('futurebound', 'https://i.imgur.com/8TsEfzo.jpg')
         .setTimestamp();
     
-    channel.send(`${member}`, embed);
+    welcomeChannel.send(`${member}`, embed);
 }
