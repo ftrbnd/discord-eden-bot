@@ -13,5 +13,5 @@ module.exports = (client, member) => {
         .setFooter('futurebound', 'https://i.imgur.com/8TsEfzo.jpg')
         .setTimestamp();
     
-        channel.send(`${member}`, embed);
+    channel.send(`${member}`, embed);
 }
