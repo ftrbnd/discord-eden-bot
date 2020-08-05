@@ -2,7 +2,7 @@ const {MessageEmbed} = require('discord.js');
 
 module.exports = async (client, member) => {
     const welcomeChannel = client.channels.fetch('655655073799471117'); // welcome channel ID
-    if(!channel)
+    if(!welcomeChannel)
         return;
     
     const embed = new MessageEmbed()
