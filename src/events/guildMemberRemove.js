@@ -7,7 +7,7 @@ module.exports = async (client, member) => {
     
     const embed = new MessageEmbed()
         .setAuthor(member.displayName + ' has left the server.', member.user.displayAvatarURL())
-        .addField('User: ', user, true)
+        .addField('User: ', member.user, true)
         .setColor(0xdf0000)
         .setThumbnail(member.user.displayAvatarURL())
         .setFooter('futurebound', 'https://i.imgur.com/8TsEfzo.jpg')
