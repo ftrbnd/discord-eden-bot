@@ -6,7 +6,7 @@ module.exports = (client) => {
         url: "https://open.spotify.com/album/7HDfpCVCVM5nlR5blLX3E8"
     });
 
-    let announcingChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'test-commands')
+    let announcingChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'spam')
     if(announcingChannel) {
         var readyEmbed = new MessageEmbed()
         .setDescription(`**${client.user.tag}** has restarted and is now online!`)

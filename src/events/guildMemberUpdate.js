@@ -1,5 +1,5 @@
 module.exports = (client, oldMember, newMember) => {
-    const channel = newMember.guild.channels.cache.find(channel => channel.name === "test-commands");
+    const channel = newMember.guild.channels.cache.find(channel => channel.name === "spam");
     if(!channel)
         return;
     

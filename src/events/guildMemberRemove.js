@@ -1,7 +1,7 @@
 const {MessageEmbed} = require('discord.js');
 
 module.exports = async (client, member) => {
-    const channel = member.guild.channels.cache.find(channel => channel.name === "test-commands");
+    const channel = member.guild.channels.cache.find(channel => channel.name === "spam");
     if(!channel)
         return;
     
