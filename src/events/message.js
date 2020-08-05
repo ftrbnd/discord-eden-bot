@@ -21,31 +21,23 @@ module.exports = async (client, message,) => {
 
     if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_3') {
         embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 3**!`);
-        welcomeChannel.send(`${message.author}`); //message.author = User type
-        welcomeChannel.send(embed);
-        generalChannel.send(`${message.author}`); //message.author = User type
-        generalChannel.send(embed);
+        welcomeChannel.send(`${message.author}`, embed);
+        generalChannel.send(`${message.author}`, embed);
     }
     else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2') {
         embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 2**!`);
-        welcomeChannel.send(`${message.author}`); //message.author = User type
-        welcomeChannel.send(embed);
-        generalChannel.send(`${message.author}`); //message.author = User type
-        generalChannel.send(embed);
+        welcomeChannel.send(`${message.author}`, embed);
+        generalChannel.send(`${message.author}`, embed);
     }
     else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1') {
         embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 1**!`);
-        welcomeChannel.send(`${message.author}`); //message.author = User type
-        welcomeChannel.send(embed);
-        generalChannel.send(`${message.author}`); //message.author = User type
-        generalChannel.send(embed);
+        welcomeChannel.send(`${message.author}`, embed);
+        generalChannel.send(`${message.author}`, embed);
     }
     else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION') {
         embed.setDescription(`They are <@&704966097434312766>.`);
-        welcomeChannel.send(`${message.author}`); //message.author = User type
-        welcomeChannel.send(embed);
-        generalChannel.send(`${message.author}`); //message.author = User type
-        generalChannel.send(embed);
+        welcomeChannel.send(`${message.author}`, embed);
+        generalChannel.send(`${message.author}`, embed);
     }
 
 
