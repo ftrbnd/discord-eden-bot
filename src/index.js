@@ -26,9 +26,17 @@ const stream = twitterClient.stream('statuses/filter', {
 stream.on('tweet', tweet => {
     const twitterMessage = `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
     if(isReply(tweet) == false) {
-        const tweetText = tweet.text;
         const tweetChannel = client.channels.cache.get('739243205807308831');
-        tweetChannel.send(twitterMessage);
+        const retweetEmoji = client.emojis.cache.get('710637137455742997');
+        // now get last message and react with retweet and heart
+        tweetChannel.send(twitterMessage) // send tweet
+            .then(() => tweetChannel.messages.fetch({ limit: 1 }) // fetch latest message
+            .then(messages => {
+                let lastMessage = messages.first(); // message retrieved
+                lastMessage.react(retweetEmoji)     // react with retweet
+                    .then(() => lastMessage.react('❤')) // react with heart
+            })
+            .catch(console.error));
     }
     return false;
 });
