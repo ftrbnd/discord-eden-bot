@@ -3,6 +3,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = (client) => {
     client.user.setActivity(`End Credits`, {
         type: "LISTENING",
+        url: "https://open.spotify.com/track/5xhHy5mpWsCkjo00LYRLSm"
     });
 
     let announcingChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'spam')
