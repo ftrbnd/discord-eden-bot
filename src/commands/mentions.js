@@ -51,7 +51,7 @@ module.exports.run = async(client, message) => {
         message.channel.send(`i think i'm catching feelings`);
     }
     else if(message.content.includes('listening') || message.content.includes('party') || message.content.includes('listening party')) {
-        message.channel.send(`next listening party: **july 4**, check <#713128726413443102>, hope to see you there x`);
+        message.channel.send(`next listening party: check <#713128726413443102>, hope to see you there x`);
     }
     else {
         // egg, peacesign, meep, high
