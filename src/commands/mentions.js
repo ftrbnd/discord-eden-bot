@@ -1,5 +1,5 @@
 module.exports.run = async(client, message) => {
-    if(message.content.includes('good morning') || message.content.includes('morning') || message.content.includes('gm')) {
+    if(message.content.includes('good morning') || message.content.includes('morning') || message.content.includes('gm') || message.content.includes('Good Morning') || message.content.includes('Good morning') || message.content.includes('GOOD MORNING')) {
         const messages = ['GOOD MORNING!', 'good morning x', 'goooood morning', 'mornin'];
         var randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.channel.send(`${message.author} ` + randomMessage);
