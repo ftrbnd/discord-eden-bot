@@ -1,3 +1,5 @@
+const {MessageEmbed} = require('discord.js');
+
 module.exports.run = async(client, message, args) => {
     if(message.member.roles.cache.has('691882703674540042')) { // Moderator
         
