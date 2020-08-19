@@ -1,7 +1,7 @@
 const {MessageEmbed} = require('discord.js');
 
 module.exports = (client) => {
-    client.user.setActivity(`no future`, {
+    client.user.setActivity(`i think you think too much of me`, {
         type: "LISTENING",
         url: "https://open.spotify.com/track/702GncAZXiEArIWBgaPJDi"
     });
