@@ -9,7 +9,7 @@ module.exports.run = async(client, message) => {
         var randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.channel.send(`${message.author} ` + randomMessage);
     }
-    else if(message.content.includes('hey') || message.content.includes('hi') || message.content.includes('hello')) {
+    else if(message.content.includes('hey') || message.content.includes('hi') || message.content.includes('hello') || message.content.includes('Hi') || message.content.includes('Hello') || message.content.includes('Hey')) {
         const messages = ['hello x', 'hey', 'hi x'];
         var randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.channel.send(`${message.author} ` + randomMessage);
@@ -19,7 +19,7 @@ module.exports.run = async(client, message) => {
         var randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.channel.send(`${message.author} ` + randomMessage);
     }
-    else if(message.content.includes('what\'s up') || message.content.includes('whats up') || message.content.includes('sup')) {
+    else if(message.content.includes('what\'s up') || message.content.includes('whats up') || message.content.includes('sup') || message.content.includes('What\'s up') || message.content.includes('Sup')) {
         const messages = ['nothing much', 'just vibing', 'been looking at the sky', 'sup'];
         var randomMessage = messages[Math.floor(Math.random() * messages.length)];
         message.channel.send(`${message.author} ` + randomMessage);
