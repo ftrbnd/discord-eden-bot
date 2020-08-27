@@ -10,12 +10,12 @@ module.exports.run = async(client, message, args) => {
         .addFields(
             {
                 name: 'Prefix',
-                value: '$',
+                value: process.env.PREFIX,
                 inline: true,
             },
             {
                 name: 'Commands',
-                value: 'announce, ban, clear, kick, mute, slowmode, unmute, warn, serverinfo',
+                value: 'announce, ban, clear, kick, mute, serverinfo, slowmode, unmute, warn',
                 inline: false,
             },  
         );
