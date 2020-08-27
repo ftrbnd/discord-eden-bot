@@ -17,7 +17,7 @@ module.exports.run = async(client, message, args) => {
                     'Yes.', 'Yes – definitely.', 'You may rely on it.'];
 
     const eightBall = new MessageEmbed()
-        .setTitle('🎱 8ball: ' + question)
+        .setTitle('🎱 ' + question)
         .setDescription(responses[Math.floor(Math.random()*(responses.length))])
         .setColor('RANDOM');
 
