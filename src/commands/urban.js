@@ -21,7 +21,7 @@ module.exports.run = async(client, message, args) => {
         const urbanEmbed = new MessageEmbed()
             .setTitle(json.word.toUpperCase())
             .setThumbnail('https://i.imgur.com/azXqb1w.png')
-            .setColor('RANDOM')
+            .setColor(0x134fe6)
             .addFields(
                 {
                     name: 'Definition',
