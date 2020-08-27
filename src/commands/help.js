@@ -11,7 +11,7 @@ module.exports.run = async(client, message, args) => {
             {
                 name: 'Prefix',
                 value: process.env.PREFIX,
-                inline: true,
+                inline: false,
             },
             {
                 name: 'Commands',
