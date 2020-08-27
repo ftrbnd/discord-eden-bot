@@ -45,6 +45,7 @@ module.exports = async (client, message,) => {
         client.commands.get('mentions').run(client, message); 
     }
 
+    
     if(!message.content.startsWith(PREFIX)) return; // commands
 
     let cmdArgs = message.content.substring(message.content.indexOf(PREFIX)+1).split(new RegExp(/\s+/));

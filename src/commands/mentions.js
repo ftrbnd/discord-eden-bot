@@ -53,6 +53,26 @@ module.exports.run = async(client, message) => {
     else if(message.content.includes('listening') || message.content.includes('party') || message.content.includes('listening party')) {
         message.channel.send(`next listening party: check <#713128726413443102>, hope to see you there x`);
     }
+    else if(message.content.includes('help')) {
+        const helpEmbed = new MessageEmbed()
+        .setTitle(`***${futurebound}*** commands list`)
+        .setThumbnail('https://cdn.discordapp.com/icons/655655072885374987/a_86186bcc651f636b2e71ccad38cf5b40.gif')
+        .setColor(0xf03200)
+        .addFields(
+            {
+                name: 'Prefix',
+                value: process.env.PREFIX,
+                inline: true,
+            },
+            {
+                name: 'Commands',
+                value: 'announce, ban, clear, kick, mute, slowmode, unmute, warn, serverinfo',
+                inline: false,
+            },  
+        );
+
+        message.channel.send(helpEmbed);
+    }
     else {
         // egg, peacesign, meep, high
         const emojis = ['704981741705625611', '655848045287571456', '724685754386612226', '655849255272972319']
