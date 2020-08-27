@@ -15,7 +15,7 @@ module.exports.run = async(client, message, args) => {
             },
             {
                 name: 'Commands',
-                value: 'announce, ban, clear, kick, mute, serverinfo, slowmode, unmute, warn',
+                value: '8ball, announce, ban, clear, kick, mute, serverinfo, slowmode, unmute, warn',
                 inline: false,
             },  
         );
