@@ -1,3 +1,5 @@
+const {MessageEmbed} = require('discord.js');
+
 module.exports.run = async(client, message) => {
     if(message.content.includes('good morning') || message.content.includes('Morning') || message.content.includes('morning') || message.content.includes('gm') || message.content.includes('Good Morning') || message.content.includes('Good morning') || message.content.includes('GOOD MORNING')) {
         const messages = ['GOOD MORNING!', 'good morning x', 'goooood morning', 'mornin'];
@@ -55,7 +57,7 @@ module.exports.run = async(client, message) => {
     }
     else if(message.content.includes('help')) {
         const helpEmbed = new MessageEmbed()
-        .setTitle(`***${futurebound}*** commands list`)
+        .setTitle(`***futurebound*** commands list`)
         .setThumbnail('https://cdn.discordapp.com/icons/655655072885374987/a_86186bcc651f636b2e71ccad38cf5b40.gif')
         .setColor(0xf03200)
         .addFields(
