@@ -10,8 +10,8 @@ module.exports.run = async(client, message, args) => {
                 'Cold Feet', 'Stingray'];
 
     // adding words to the random quote
-    var textToType = 'hello';
-    for(var i = 0; i < 10; i++) {
+    var textToType = words[Math.floor(Math.random()*(words.length))];
+    for(var i = 0; i < 9; i++) {
         textToType += ' ' + words[Math.floor(Math.random()*(words.length))];
     }
     
@@ -20,12 +20,13 @@ module.exports.run = async(client, message, args) => {
         .setTitle(`Typing Test`)
         .setThumbnail('https://knovi.com/images/JurvoTypingAnimation.gif')
         .setColor(0xfdfaff)
-        .setDescription(textToType);
+        .setDescription(textToType)
+        .setFooter(message.author.username, message.author.displayAvatarURL());
 
     message.channel.send(typingTest);
 
     // using message collector, collect message that starts with the keyword
-    const filter = m => m.content.includes('hello') || m.content.includes('Hello');
+    const filter = m => m.author === message.author;
     const collector = message.channel.createMessageCollector(filter);
 
     var typingResult = '';
@@ -43,17 +44,16 @@ module.exports.run = async(client, message, args) => {
         const numChars = typingResult.length;
         const wpm = (((numChars / 5) / diffSeconds) * 60).toFixed(2); // keep to 2 decimal places
 
-        // accuracy
+        // accuracy calculation
         var accuracyCount = 0;
-        textToType.split(' ');
+        textToType.split(' '); // make into arrays
         typingResult.split(' ');
-        //console.log(textToType);
-        //console.log(typingResult);
         for(var i = 0; i < textToType.length; i++) {
-            if(textToType[i] === typingResult[i])
+            if(textToType[i] === typingResult[i]) {
                 accuracyCount++;
+            }
         }
-        accuracyCount /= typingTest.length;
+        accuracyCount /= textToType.length;
         accuracyCount = (accuracyCount * 100).toFixed(2);
 
         var color;
@@ -74,7 +74,8 @@ module.exports.run = async(client, message, args) => {
             .setTitle('Typing Test Results')
             .setColor(color)
             .addField('WPM', wpm)
-            .addField('Accuracy', accuracyCount + '%');
+            .addField('Accuracy', accuracyCount + '%')
+            .setFooter(message.author.username, message.author.displayAvatarURL());
 
         message.channel.send(wpmEmbed);
     });
