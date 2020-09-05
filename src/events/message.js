@@ -12,32 +12,34 @@ module.exports = async (client, message,) => {
     if(!generalChannel)
         return;
 
-    const embed = new MessageEmbed()
-    .setAuthor(message.member.displayName + ' just boosted the server!', message.member.user.displayAvatarURL()) // message + their avatar
-    .setColor(0xf47fff) // pink boost color
-    .setThumbnail('https://emoji.gg/assets/emoji/1819_boostingtop.gif') // nitro boost gif
-    .setFooter('futurebound', 'https://i.imgur.com/8TsEfzo.jpg') // server icon
-    .setTimestamp(); // when the boost happened
+    const boostEmbed = new MessageEmbed()
+        .setAuthor(message.member.displayName + ' just boosted the server!', message.member.user.displayAvatarURL()) // message + their avatar
+        .setColor(0xf47fff) // pink boost color
+        .setThumbnail('https://emoji.gg/assets/emoji/1819_boostingtop.gif') // nitro boost gif
+        .addField('Server Level', `${message.guild.premiumTier}`, true)
+        .addField('Server Boosts', `${message.guild.premiumSubscriptionCount}`, true)
+        .setFooter('futurebound', 'https://i.imgur.com/8TsEfzo.jpg') // server icon
+        .setTimestamp(); // when the boost happened
 
     if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_3') {
-        embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 3**!`);
-        welcomeChannel.send(`${message.author}`, embed);
-        generalChannel.send(`${message.author}`, embed);
+        boostEmbed.setDescription(`Server booster role: <@&704966097434312766>. \n**futurebound** has achieved **Level 3**!`);
+        welcomeChannel.send(`${message.author}`, boostEmbed);
+        generalChannel.send(boostEmbed);
     }
     else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_2') {
-        embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 2**!`);
-        welcomeChannel.send(`${message.author}`, embed);
-        generalChannel.send(`${message.author}`, embed);
+        boostEmbed.setDescription(`Server booster role: <@&704966097434312766>. \n**futurebound** has achieved **Level 2**!`);
+        welcomeChannel.send(`${message.author}`, boostEmbed);
+        generalChannel.send(boostEmbed);
     }
     else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION_TIER_1') {
-        embed.setDescription(`They are <@&704966097434312766>. \n**futurebound** has achieved **Level 1**!`);
-        welcomeChannel.send(`${message.author}`, embed);
-        generalChannel.send(`${message.author}`, embed);
+        boostEmbed.setDescription(`Server booster role: <@&704966097434312766>. \n**futurebound** has achieved **Level 1**!`);
+        welcomeChannel.send(`${message.author}`, boostEmbed);
+        generalChannel.send(boostEmbed);
     }
     else if(message.type === 'USER_PREMIUM_GUILD_SUBSCRIPTION') {
-        embed.setDescription(`They are <@&704966097434312766>.`);
-        welcomeChannel.send(`${message.author}`, embed);
-        generalChannel.send(`${message.author}`, embed);
+        boostEmbed.setDescription(`Server booster role: <@&704966097434312766>`);
+        welcomeChannel.send(`${message.author}`, boostEmbed);
+        generalChannel.send(boostEmbed);
     }
 
 
