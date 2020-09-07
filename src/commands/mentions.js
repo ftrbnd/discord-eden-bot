@@ -57,7 +57,7 @@ module.exports.run = async(client, message) => {
     }
     else if(message.content.includes('help')) {
         const helpEmbed = new MessageEmbed()
-        .setTitle(`***futurebound*** commands list`)
+        .setTitle(`***${message.guild}*** commands list`)
         .setThumbnail('https://cdn.discordapp.com/icons/655655072885374987/a_86186bcc651f636b2e71ccad38cf5b40.gif')
         .setColor(0xf03200)
         .addFields(
@@ -68,7 +68,7 @@ module.exports.run = async(client, message) => {
             },
             {
                 name: 'Commands',
-                value: '8ball, announce, ban, clear, kick, mute, serverinfo, slowmode, typingtest, unmute, urban, warn',
+                value: '8ball, announce, ban, clear, jon, kick, mute, serverinfo, slowmode, typingtest, unmute, urban, warn',
                 inline: false,
             },  
         );

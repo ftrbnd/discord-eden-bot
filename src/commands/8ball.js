@@ -1,7 +1,6 @@
 const {MessageEmbed} = require('discord.js');
 
 module.exports.run = async(client, message, args) => {
-    // const futurebound = client.guilds.cache.get('655655072885374987');
     let question = message.content.slice(process.env.PREFIX.length + 6);
     if(!question) {
         const errEmbed = new MessageEmbed()

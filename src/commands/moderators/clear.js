@@ -31,14 +31,14 @@ module.exports.run = async(client, message, args) => {
                 .setDescription(`sucessfully deleted **${deleteAmount}** message!`)
                 .setColor(0x32ff25);
             message.channel.send(oneMessage)
-                .then(message => message.delete({ timeout : 5000 }));
+                .then(message => message.delete({ timeout : 1000 }));
         }
         else {
             const multiMessages = new MessageEmbed()
                 .setDescription(`sucessfully deleted **${deleteAmount}** messages!`)
                 .setColor(0x32ff25);
             message.channel.send(multiMessages)
-                .then(message => message.delete({ timeout : 5000 }));
+                .then(message => message.delete({ timeout : 1000 }));
         }
     }
     else {
