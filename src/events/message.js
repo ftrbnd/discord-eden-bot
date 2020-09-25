@@ -4,6 +4,19 @@ const PREFIX = process.env.PREFIX;
 module.exports = async (client, message,) => {
     if(message.author.bot) return; // ignore if it's a bot
 
+    if(message.channel.type === 'dm') {
+        //console.log('THIS IS A DM');
+        spamChannel = client.guilds.cache.get('655655072885374987').channels.cache.get('692822264982405240'); // spam channel for futurebound server
+
+        const dmEmbed = new MessageEmbed()
+            .setAuthor(`Direct message from ${message.author.tag}`, message.author.displayAvatarURL())
+            .setDescription(message.content)
+            .setColor(0x7289da)
+            .setTimestamp();
+
+        return spamChannel.send(dmEmbed);
+    }
+
     const welcomeChannel = message.member.guild.channels.cache.find(channel => channel.name === "welcome");
     if(!welcomeChannel)
         return;
