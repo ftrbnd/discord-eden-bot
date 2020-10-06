@@ -1,24 +1,21 @@
 const {MessageEmbed} = require('discord.js');
 
 module.exports.run = async(client, message, args) => {
-    const futurebound = client.guilds.cache.get('655655072885374987');
-
-    const createdAt = futurebound.createdAt.toString().split(' ');
-    //console.log(createdAt[1], createdAt[2], createdAt[3]);
+    const createdAt = message.guild.createdAt.toString().split(' ');
 
     const serverInfo = new MessageEmbed()
-        .setTitle(`***${futurebound}*** server info`)
-        .setThumbnail('https://cdn.discordapp.com/icons/655655072885374987/a_86186bcc651f636b2e71ccad38cf5b40.gif')
+        .setTitle(`***${message.guild}*** server info`)
+        .setThumbnail(message.guild.iconURL({ dynamic : true}))
         .setColor(0xf03200)
         .addFields(
             {
                 name: 'Owner',
-                value: futurebound.owner,
+                value: message.guild.owner,
                 inline: true,
             },
             {
                 name: 'Region',
-                value: futurebound.region,
+                value: message.guild.region,
                 inline: true,
             },
             {
@@ -28,17 +25,17 @@ module.exports.run = async(client, message, args) => {
             },
             {
                 name: 'Member Count',
-                value: futurebound.memberCount,
+                value: message.guild.memberCount,
                 inline: true,
             },
             {
                 name: 'Server Level',
-                value: futurebound.premiumTier,
+                value: message.guild.premiumTier,
                 inline: true,
             }, 
             {
                 name: 'Server Boosts',
-                value: futurebound.premiumSubscriptionCount,
+                value: message.guild.premiumSubscriptionCount,
                 inline: true,
             },     
         );
