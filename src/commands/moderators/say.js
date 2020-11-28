@@ -10,7 +10,7 @@ module.exports.run = async(client, message, args) => {
             return message.channel.send(errEmbed);
         }
 
-        let announcement = message.content.substring(10 + args[0].length); // length of command 'announce' + 2    
+        let announcement = message.content.substring(5 + args[0].length); // length of command 'say' + 2    
         //console.log(args);
         if(args.length < 2) {
             const errEmbed = new MessageEmbed()
