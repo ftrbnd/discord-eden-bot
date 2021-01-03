@@ -3,17 +3,22 @@ const {MessageEmbed} = require('discord.js');
 module.exports.run = async(client, message, args) => {
     const helpEmbed = new MessageEmbed()
         .setTitle(`***${message.guild}*** commands list`)
-        .setThumbnail('https://cdn.discordapp.com/icons/655655072885374987/a_86186bcc651f636b2e71ccad38cf5b40.gif')
+        .setThumbnail(message.guild.iconURL({ dynamic : true}))
         .setColor(0xf03200)
         .addFields(
             {
                 name: 'Prefix',
                 value: process.env.PREFIX,
+                inline: true,
+            },
+            {
+                name: 'Moderator Commands',
+                value: 'ban, clear, kick, lockdown, mute, reopen, say, slowmode, unmute, warn',
                 inline: false,
             },
             {
-                name: 'Commands',
-                value: '8ball, ban, clear, dm, jon, kick, lyrics, mute, say, serverinfo, slowmode, typingtest, unmute, urban, warn',
+                name: 'General Commands',
+                value: '8ball, eden, lyrics, serverinfo, typingtest, urban',
                 inline: false,
             },  
         );
