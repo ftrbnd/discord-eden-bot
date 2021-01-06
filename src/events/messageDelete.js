@@ -5,6 +5,9 @@ module.exports = (client, message) => {
     if(!channel)
         return;
 
+    if(message.author.bot)
+        return;
+        
     const msgDeleteEmbed = new MessageEmbed()
         .setAuthor(`${message.author.tag} deleted a message.`, message.author.displayAvatarURL())
         .setDescription(message.content)
