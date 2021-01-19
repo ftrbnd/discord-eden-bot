@@ -3,6 +3,7 @@ const {MessageEmbed} = require('discord.js');
 module.exports = (client) => {
     client.user.setActivity(`vertigo`, {
         type: "LISTENING",
+        url: "https://open.spotify.com/track/1C0wUTyX5wZA4AbZaZfZAB"
     });
 
     let announcingChannel = client.channels.cache.find(channel => channel.name.toLowerCase() === 'spam')
