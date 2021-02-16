@@ -55,11 +55,17 @@ module.exports = async (client, message,) => {
         generalChannel.send(boostEmbed);
     }
 
+    // add upvote/downvote reactions to subreddit channel
+    if(message.channel.id === '811050618260291614') {
+        const upvoteEmoji = client.emojis.cache.get('748310857653420164');
+        const downvoteEmoji = client.emojis.cache.get('748310857871654954');
+        message.react(upvoteEmoji)     // react with upvote
+            .then(() => message.react(downvoteEmoji)); // react with downvote
+    }
 
     if(message.mentions.has(client.user) && !message.author.bot) { // if the bot is mentioned and it's not by a bot
         client.commands.get('mentions').run(client, message); 
     }
-
     
     if(!message.content.startsWith(PREFIX)) return; // commands
 
