@@ -3,11 +3,25 @@ const PREFIX = process.env.PREFIX;
 
 module.exports = async (client, message,) => {
     // add upvote/downvote reactions to subreddit channel
-    if(message.channel.id === '811050618260291614') {
+    if(message.channel.id === '692822264982405240' && message.webhookID) { // if sent in spam channel and is a webhook message
+        const subredditChannel = message.channel.guild.channels.cache.find(channel => channel.name === "subreddit");
+        if(!subredditChannel)
+            return;
+
+        const redditEmbed = new MessageEmbed()
+            .setAuthor(message.embeds[0].author.name, message.embeds[0].author.iconURL, message.embeds[0].author.url)
+            .setTitle(message.embeds[0].title)
+            .setURL(message.embeds[0].url)
+            .addFields(message.embeds[0].fields)
+            .setImage(message.embeds[0].image.url)
+            .setColor(0xFF4500)
+        subredditChannel.send(redditEmbed);
+    }
+    if(message.channel.id === '811050618260291614') { // if message is sent in subreddit channel
         const upvoteEmoji = client.emojis.cache.get('748310857653420164');
         const downvoteEmoji = client.emojis.cache.get('748310857871654954');
-        message.react(upvoteEmoji)     // react with upvote
-            .then(() => message.react(downvoteEmoji)); // react with downvote
+        message.react(upvoteEmoji)     // react with upvote first
+            .then(() => message.react(downvoteEmoji)); // then react with downvote
     }
     
     if(message.author.bot) return; // ignore if it's a bot
