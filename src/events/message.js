@@ -2,6 +2,14 @@ const {MessageEmbed} = require('discord.js');
 const PREFIX = process.env.PREFIX;
 
 module.exports = async (client, message,) => {
+    // add upvote/downvote reactions to subreddit channel
+    if(message.channel.id === '811050618260291614') {
+        const upvoteEmoji = client.emojis.cache.get('748310857653420164');
+        const downvoteEmoji = client.emojis.cache.get('748310857871654954');
+        message.react(upvoteEmoji)     // react with upvote
+            .then(() => message.react(downvoteEmoji)); // react with downvote
+    }
+    
     if(message.author.bot) return; // ignore if it's a bot
 
     if(message.channel.type === 'dm') {
@@ -53,14 +61,6 @@ module.exports = async (client, message,) => {
         boostEmbed.setDescription(`Server booster role: <@&704966097434312766>`);
         welcomeChannel.send(`${message.author}`, boostEmbed);
         generalChannel.send(boostEmbed);
-    }
-
-    // add upvote/downvote reactions to subreddit channel
-    if(message.channel.id === '811050618260291614') {
-        const upvoteEmoji = client.emojis.cache.get('748310857653420164');
-        const downvoteEmoji = client.emojis.cache.get('748310857871654954');
-        message.react(upvoteEmoji)     // react with upvote
-            .then(() => message.react(downvoteEmoji)); // react with downvote
     }
 
     if(message.mentions.has(client.user) && !message.author.bot) { // if the bot is mentioned and it's not by a bot
