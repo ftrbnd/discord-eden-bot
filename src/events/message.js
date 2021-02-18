@@ -2,19 +2,27 @@ const {MessageEmbed} = require('discord.js');
 const PREFIX = process.env.PREFIX;
 
 module.exports = async (client, message,) => {
-    // add upvote/downvote reactions to subreddit channel
+    // using mee6's reddit webhook
     if(message.channel.id === '692822264982405240' && message.webhookID) { // if sent in spam channel and is a webhook message
         const subredditChannel = message.channel.guild.channels.cache.find(channel => channel.name === "subreddit");
         if(!subredditChannel)
             return;
 
-        const redditEmbed = new MessageEmbed()
-            .setAuthor(message.embeds[0].author.name, message.embeds[0].author.iconURL, message.embeds[0].author.url)
+        var redditEmbed = new MessageEmbed()
             .setTitle(message.embeds[0].title)
-            .setURL(message.embeds[0].url)
-            .addFields(message.embeds[0].fields)
-            .setImage(message.embeds[0].image.url)
+            .setURL(message.embeds[0].author.url)
             .setColor(0xFF4500)
+            .setFooter(`Posted by ${message.embeds[0].fields[0].value} on /r/eden`, 'https://logodownload.org/wp-content/uploads/2018/02/reddit-logo-16.png')
+            .setTimestamp()
+
+        if(message.embeds[0].description == 'undefined' || message.embeds[0].description == undefined)
+            redditEmbed.setDescription('')
+        else
+            redditEmbed.setDescription(message.embeds[0].description)
+        
+        if(message.embeds[0].image != null)
+            redditEmbed.setImage(message.embeds[0].image.url)
+
         subredditChannel.send(redditEmbed);
     }
     if(message.channel.id === '811050618260291614') { // if message is sent in subreddit channel
