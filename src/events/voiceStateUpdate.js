@@ -30,6 +30,7 @@ module.exports = async (client, oldState, newState) => {
             .setColor(0x32ff25)
             .setFooter('futurebound', newState.guild.iconURL({ dynamic: true }))
         voiceChat.send(`${newState.member}`, helloEmbed)
+            .then(message => message.delete({ timeout : 60000 }));
 
         const vcUpdateEmbed = new MessageEmbed()
             .setDescription(`${oldState.member.user.tag} created **${customChannel.name}**`)
