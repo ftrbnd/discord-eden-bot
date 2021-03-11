@@ -26,7 +26,7 @@ module.exports = async (client, oldState, newState) => {
         newState.setChannel(customChannel) // move the user to the newly created channel
 
         helloEmbed = new MessageEmbed()
-            .setDescription('You just created your own voice channel! Feel free to edit the channel name to let others know what your channel is about.')
+            .setDescription('You just created your own voice channel! Feel free to edit the channel name to let others know what your channel is about. NOTE: Make sure you have **Two-Factor Authentication** enabled on your Discord account.')
             .setColor(0x32ff25)
             .setFooter('futurebound', newState.guild.iconURL({ dynamic: true }))
         voiceChat.send(`${newState.member}`, helloEmbed)
