@@ -12,7 +12,7 @@ module.exports = (client, oldChannel, newChannel) => {
         const censoredName = filter.clean(newChannel.name);
         newChannel.setName(censoredName);
 
-        var attemptedProfanity = new MessageEmbed()
+        const attemptedProfanity = new MessageEmbed()
             .setTitle(`A custom voice channel's name contained profanity.`)
             .addFields(
                 { name: 'Previous name', value: `${oldChannel.name}`, inline: true },
@@ -23,5 +23,17 @@ module.exports = (client, oldChannel, newChannel) => {
             .setFooter('futurebound', oldChannel.guild.iconURL({ dynamic: true }))
             .setTimestamp();
         modChannel.send(attemptedProfanity);
+    }
+    else if(oldChannel.name != newChannel.name) {
+        const changedEmbed = new MessageEmbed()
+            .setTitle(`A custom voice channel's name was changed.`)
+            .addFields(
+                { name: 'Previous name', value: oldChannel.name, inline: true },
+                { name: 'New name', value: newChannel.name, inline: true },
+            )
+            .setColor(0x32ff25)
+            .setFooter('futurebound', oldChannel.guild.iconURL({ dynamic: true }))
+            .setTimestamp();
+        modChannel.send(changedEmbed);
     }
 }
