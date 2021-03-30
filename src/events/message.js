@@ -98,10 +98,10 @@ module.exports = async (client, message,) => {
     if(client.commands.get(cmdName)) {
         client.commands.get(cmdName).run(client, message, cmdArgs);
     }
-    else {
-        const errEmbed = new MessageEmbed()
-            .setDescription('command does not exist.')
-            .setColor(0xdf0000);
-        message.channel.send(errEmbed);
-    }
+    // else {
+    //     const errEmbed = new MessageEmbed()
+    //         .setDescription('command does not exist.')
+    //         .setColor(0xdf0000);
+    //     message.channel.send(errEmbed);
+    // }
 }
