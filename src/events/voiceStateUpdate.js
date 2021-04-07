@@ -43,6 +43,7 @@ module.exports = async (client, oldState, newState) => {
         const vcUpdateEmbed = new MessageEmbed()
             .setDescription(`${newState.member.user.tag} joined **${newState.channel.name}**`)
             .setColor(0x32ff25)
+            .setTimestamp()
             .setFooter(`User ID: ${newState.member.user.id}`, newState.member.user.displayAvatarURL());
         channel.send(vcUpdateEmbed);
     }
@@ -51,6 +52,7 @@ module.exports = async (client, oldState, newState) => {
         const vcUpdateEmbed = new MessageEmbed()
             .setDescription(`${oldState.member.user.tag} left **${oldState.channel.name}**`)
             .setColor(0xdf0000)
+            .setTimestamp()
             .setFooter(`User ID: ${oldState.member.user.id}`, oldState.member.user.displayAvatarURL());
         channel.send(vcUpdateEmbed);
     }
