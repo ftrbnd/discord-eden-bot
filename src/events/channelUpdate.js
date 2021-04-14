@@ -1,6 +1,7 @@
 const {MessageEmbed} = require('discord.js');
 var Filter = require('bad-words'),
     filter = new Filter();
+filter.removeWords('sex');
 
 module.exports = (client, oldChannel, newChannel) => {
     const modChannel = oldChannel.guild.channels.cache.find(channel => channel.name === "spam");
