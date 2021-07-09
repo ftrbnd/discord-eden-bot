@@ -16,6 +16,7 @@ module.exports.run = async(client, message, args) => {
     // '????'; 'and' return different songs
     
     const randomSong = songs[Math.floor(Math.random() * songs.length)];
+    console.log(randomSong)
 
     var line = ''
     ftl.find(artist, randomSong, function(err, resp) {
@@ -42,11 +43,11 @@ module.exports.run = async(client, message, args) => {
 
             // embed that will show the song lyric
             const guessTheSong = new MessageEmbed()
-            .setTitle(`Guess The Song`)
-            .setThumbnail('https://i.imgur.com/rQmm1FM.png')
-            .setColor(0xfa57c1)
-            .setDescription(line)
-            .setFooter(message.guild.name, message.guild.iconURL({ dynamic : true}));
+                .setTitle(`Guess The Song`)
+                .setThumbnail('https://i.imgur.com/rQmm1FM.png')
+                .setColor(0xfa57c1)
+                .setDescription(line)
+                .setFooter(message.guild.name, message.guild.iconURL({ dynamic : true}));
 
             message.channel.send(guessTheSong);
         } else {
