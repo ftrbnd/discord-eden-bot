@@ -1,5 +1,4 @@
 const {MessageEmbed} = require('discord.js');
-const mongo = require('../mongo');
 
 module.exports = async (client) => {
     const songs = ['02:09', 'End Credits', 'Gravity', 'Nocturne', 'Interlude', 'Wake Up', 
