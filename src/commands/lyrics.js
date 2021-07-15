@@ -19,7 +19,8 @@ module.exports.run = async(client, message, args) => {
     console.log(randomSong)
 
     var line = ''
-    ftl.find(artist, randomSong, function(err, resp) {
+    const artistSong = artist + " " + randomSong
+    ftl.find(artistSong, function(err, resp) {
         if (!err) {
             var lyrics = resp;
 
