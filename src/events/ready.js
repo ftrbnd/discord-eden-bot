@@ -1,7 +1,7 @@
 const {MessageEmbed} = require('discord.js');
 
 module.exports = async (client) => {
-    const songTimes = ['02:09', 'End Credits', 'Gravity', 'Nocturne', 'Interlude', 'Wake Up', 
+    const songs = ['02:09', 'End Credits', 'Gravity', 'Nocturne', 'Interlude', 'Wake Up', 
         'catch me if you can', 'Billie Jean', 'sex', 'drugs', 'and', 'rock + roll', 
         'Fumes', 'XO', 'Circles', 'wrong', 'take care', 'start//end', 'wings', 'icarus', 
         'lost//found', 'crash', 'gold', 'forever//over', 'float', 'wonder', 
@@ -11,7 +11,7 @@ module.exports = async (client) => {
         'so far so good', 'isohel', 'tides', 'rushing', '$treams', '2020', 'out', 'untitled', 
         'Peaked', 'Cold Feet', 'Stingray', 'cant help']
 
-    const songTimes = new Map()
+    var songTimes = new Map()
     songTimes.set('02:09', 251)
     songTimes.set('End Credits', 240)
     songTimes.set('Gravity', 231)
