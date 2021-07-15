@@ -69,12 +69,12 @@ module.exports = async (client) => {
     songTimes.set('Stingray', 175)
     songTimes.set('cant help', 150)
 
-    //const updateDelay = 180; // status will change every 180 seconds
-    let currentIndex = 0;
+    var updateDelay = 0
+    let currentIndex = 0
 
     setInterval(() => {
         const activity = songs[currentIndex]
-        const updateDelay = songTimes.get(activity) // status will last as long as its respective songs lasts
+        updateDelay = songTimes.get(activity) // status will last as long as its respective songs lasts
         client.user.setActivity(activity, {
             type: "LISTENING",
         })
@@ -92,8 +92,8 @@ module.exports = async (client) => {
         var readyEmbed = new MessageEmbed()
         .setDescription(`**${client.user.tag}** has restarted and is now online!`)
         .setColor(0x32ff25);
-        announcingChannel.send(readyEmbed);
+        announcingChannel.send(readyEmbed)
     }
     
-    console.log(`${client.user.tag} has restarted and is now online!`);
+    console.log(`${client.user.tag} has restarted and is now online!`)
 }
