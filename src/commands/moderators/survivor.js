@@ -13,7 +13,6 @@ module.exports.run = async(client, message, args) => {
         emojiMap.set('cmiyc', 'catch me if you can')
         
         console.log(args)
-        const argsCopy = [...args]
 
         var songArray = [] // contains elements in the format of 'EMOJI - Song Name'
         while(args.length > 0) {
