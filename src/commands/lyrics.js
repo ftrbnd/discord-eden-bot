@@ -53,6 +53,8 @@ module.exports.run = async(client, message, args) => {
         }
     })
 
+    console.log(line)
+
     // using message collector, collect the first message that guesses the song correctly
     const filter = m => m.content.toLowerCase().includes(randomSong.toLowerCase())
     const collector = message.channel.createMessageCollector(filter)
