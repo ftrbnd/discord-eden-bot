@@ -47,13 +47,13 @@ module.exports.run = async(client, message, args) => {
                 .setDescription(line)
                 .setFooter(message.guild.name, message.guild.iconURL({ dynamic : true}))
 
+            console.log(line)
+
             message.channel.send(guessTheSong)
         } else {
             console.log(err)
         }
     })
-
-    console.log(line)
 
     // using message collector, collect the first message that guesses the song correctly
     const filter = m => m.content.toLowerCase().includes(randomSong.toLowerCase())
