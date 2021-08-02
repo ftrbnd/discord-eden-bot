@@ -5,7 +5,7 @@ module.exports.run = async(client, message, args) => {
     // given values
     const artist = "EDEN"
     const songs = ['End Credits', 'Gravity', 'Nocturne', 'Interlude', 'Wake Up', 
-        'catch me if you can', 'Billie Jean', 'sex', 'drugs', 'rock + roll', 
+        'Billie Jean', 'sex', 'drugs', 'rock + roll', 
         'Fumes', 'XO', 'Circles', 'wrong', 'take care', 'start//end', 'wings', 'icarus', 
         'lost//found', 'crash', 'gold', 'forever//over', 'float', 'wonder', 
         'love; not wrong (brave)', 'falling in reverse', 'about time', 'all you need is love', 
@@ -13,7 +13,7 @@ module.exports.run = async(client, message, args) => {
         'love, death, distraction', 'how to sleep', 'calm down', 'just saying', 'fomo', 
         'so far so good', 'isohel', 'tides', 'rushing', '$treams', '2020', 'untitled', 
         'Peaked', 'Cold Feet', 'Stingray', 'cant help']
-    // '????' & 'and' return different songs
+    // '????' & 'and'  & 'catch me if you can' return different songs
     
     const randomSong = songs[Math.floor(Math.random() * songs.length)]
 
