@@ -47,8 +47,6 @@ module.exports.run = async(client, message, args) => {
                 .setDescription(line)
                 .setFooter(message.guild.name, message.guild.iconURL({ dynamic : true}))
 
-            console.log(line)
-
             message.channel.send(guessTheSong)
         } else {
             console.log(err)
