@@ -22,10 +22,6 @@ module.exports.run = async(client, message, args) => {
     ftl.find(artistSong, function(err, resp) {
         if (!err) {
             var lyrics = resp
-            
-            // log the command
-            console.log(`LYRICS COMMAND WAS USED - SONG: ${randomSong}`)
-            console.log(lyrics)
 
             lines = lyrics.split("\n") // split into an array containing each line
             lines = lines.filter(item => item) // get rid of empty lines ''
@@ -39,6 +35,10 @@ module.exports.run = async(client, message, args) => {
                 line = lines[randomIndex] + "\n" + lines[randomIndex + 1]
             }
             while(lines[randomIndex].includes('[') || lines[randomIndex + 1].includes('[')) 
+
+            // log the command
+            console.log(`LYRICS COMMAND WAS USED - SONG: ${randomSong}`)
+            console.log(line)
 
             // embed that will show the song lyric
             const guessTheSong = new MessageEmbed()
