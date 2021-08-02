@@ -22,7 +22,7 @@ module.exports.run = async(client, message, args) => {
     ftl.find(artistSong, function(err, resp) {
         if (!err) {
             var lyrics = resp
-
+            
             // log the command
             console.log(`LYRICS COMMAND WAS USED - SONG: ${randomSong}`)
             console.log(lyrics)
@@ -59,7 +59,7 @@ module.exports.run = async(client, message, args) => {
     const collector = message.channel.createMessageCollector(filter)
 
     collector.on('collect', m => {
-
+        
         const winnerEmbed = new MessageEmbed()
             .setTitle(m.author.username + ' guessed the song!')
             .addField('Song', randomSong)
@@ -71,5 +71,5 @@ module.exports.run = async(client, message, args) => {
         message.channel.send(winnerEmbed)
 
         collector.stop()
-    });
+    })
 }
