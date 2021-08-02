@@ -20,7 +20,7 @@
     "dotenv": "^8.2.0",
     "erela.js": "^1.1.8",
     "ffmpeg-static": "^4.2.4",
-    "findthelyrics": "^1.0.7",
+    "findthelyrics": "^1.1.0",
     "imgur": "^0.3.1",
     "twit": "^2.2.11",
     "urban": "^0.3.2",
