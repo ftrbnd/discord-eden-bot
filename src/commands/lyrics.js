@@ -17,14 +17,14 @@ module.exports.run = async(client, message, args) => {
     
     const randomSong = songs[Math.floor(Math.random() * songs.length)]
 
+     // log the command
+     console.log(`LYRICS COMMAND WAS USED - SONG: ${randomSong}`)
+
     var line = ''
     const artistSong = `${artist} ${randomSong}`
     ftl.find(artistSong, function(err, resp) {
         if (!err) {
             var lyrics = resp
-            
-            // log the command
-            console.log(`LYRICS COMMAND WAS USED - SONG: ${randomSong}`)
 
             lines = lyrics.split("\n") // split into an array containing each line
             lines = lines.filter(item => item) // get rid of empty lines ''
