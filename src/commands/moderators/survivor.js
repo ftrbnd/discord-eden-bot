@@ -31,7 +31,7 @@ module.exports.run = async(client, message, args) => {
             .setTitle('END CREDITS EP - SURVIVOR')
             .setDescription(finalString)
             .setColor(0xc0a694)
-            .setFooter(message.guild.name, message.guild.iconURL())
+            .setFooter(message.guild.name, message.guild.iconURL({ dynamic : true}) )
 
         await message.channel.send("Remember to vote for your **LEAST** favorite song! <@&871450610216611941>", survivorEmbed)
         
