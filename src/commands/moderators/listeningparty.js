@@ -21,7 +21,7 @@ module.exports.run = async(client, message, args) => {
                     deny: 'VIEW_CHANNEL'
                 },
                 {
-                    id: message.guild.roles.cache.find(role => role.name === 'test bot for the main bot').id, 
+                    id: message.guild.roles.cache.find(role => role.name === 'not actually eden').id, 
                     allow: 'VIEW_CHANNEL'
                 },
                 {
@@ -44,7 +44,7 @@ module.exports.run = async(client, message, args) => {
                     deny: 'VIEW_CHANNEL'
                 },
                 {
-                    id: message.guild.roles.cache.find(role => role.name === 'test bot for the main bot').id, 
+                    id: message.guild.roles.cache.find(role => role.name === 'not actually eden').id, 
                     allow: 'VIEW_CHANNEL'
                 },
                 {
