@@ -5,7 +5,6 @@ module.exports.run = async(client, message, args) => {
         
         message.channel.messages.fetch({ limit: 2 })
             .then(messages => {
-                console.log(messages)
                 let lastMessage = messages.last()
 
                 args.forEach((element) => {
