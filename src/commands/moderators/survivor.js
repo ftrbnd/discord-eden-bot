@@ -13,6 +13,7 @@ module.exports.run = async(client, message, args) => {
         emojiMap.set('cmiyc', 'catch me if you can')
         
         console.log(args)
+        const argsCopy = [...args]
 
         var songArray = [] // contains elements in the format of 'EMOJI - Song Name'
         while(args.length > 0) {
@@ -31,8 +32,14 @@ module.exports.run = async(client, message, args) => {
             .setDescription(finalString)
             .setColor(0xc0a694)
             .setFooter(message.guild.name, message.guild.iconURL())
+
+        await message.channel.send("Remember to vote for your **LEAST** favorite song! <@&871450610216611941>", survivorEmbed)
         
-        message.channel.send("Remember to vote for your **LEAST** favorite song!", survivorEmbed)
+        // react to the poll with each song's emoji
+        argsCopy.forEach((element) => {
+            var emojiToReact = message.guild.emojis.cache.find(emoji => emoji.name === element)
+            message.channel.lastMessage.react(emojiToReact)
+        })
 
     }
     else {
