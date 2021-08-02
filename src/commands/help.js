@@ -13,7 +13,7 @@ module.exports.run = async(client, message, args) => {
             },
             {
                 name: 'Moderator Commands',
-                value: 'ban, clear, kick, lockdown, mute, reopen, say, slowmode, unmute, warn',
+                value: 'ban, clear, kick, listeningparty, listeningpartyopen, lockdown, mute, react, reopen, say, slowmode, survivor, unmute, warn',
                 inline: false,
             },
             {
