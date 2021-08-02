@@ -12,7 +12,6 @@ module.exports.run = async(client, message, args) => {
         emojiMap.set('wake_up', 'Wake Up')
         emojiMap.set('cmiyc', 'catch me if you can')
         
-        console.log(args)
         const argsCopy = [...args]
 
         var songArray = [] // contains elements in the format of 'EMOJI - Song Name'
