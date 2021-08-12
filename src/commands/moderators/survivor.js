@@ -4,13 +4,13 @@ module.exports.run = async(client, message, args) => {
     if(message.member.roles.cache.has('691882703674540042')) { // Moderator
 
         const emojiMap = new Map()
-        emojiMap.set('0209', '02:09')
-        emojiMap.set('end_credits', 'End Credits')
-        emojiMap.set('gravity', 'Gravity')
-        emojiMap.set('nocturne', 'Nocturne')
-        emojiMap.set('interlude', 'Interlude')
-        emojiMap.set('wake_up', 'Wake Up')
-        emojiMap.set('cmiyc', 'catch me if you can')
+        emojiMap.set('sex', 'sex')
+        emojiMap.set('drugs', 'drugs')
+        emojiMap.set('and', 'and')
+        emojiMap.set('rockandroll', 'rock + roll')
+        emojiMap.set('fumes_gnash', 'Fumes (feat. gnash)')
+        emojiMap.set('xo', 'XO')
+        emojiMap.set('circles', 'Circles')
         
         const argsCopy = [...args]
 
@@ -27,9 +27,9 @@ module.exports.run = async(client, message, args) => {
         })
 
         const survivorEmbed = new MessageEmbed()
-            .setTitle('END CREDITS EP - SURVIVOR')
+            .setTitle('I THINK YOU THINK TOO MUCH OF ME - SURVIVOR')
             .setDescription(finalString)
-            .setColor(0xc0a694)
+            .setColor(0xb8ffe4)
             .setFooter(message.guild.name, message.guild.iconURL({ dynamic : true}) )
 
         await message.channel.send("Remember to vote for your **LEAST** favorite song! <@&871450610216611941>", survivorEmbed)
