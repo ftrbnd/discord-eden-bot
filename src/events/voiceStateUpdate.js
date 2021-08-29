@@ -57,15 +57,15 @@ module.exports = async (client, oldState, newState) => {
         channel.send(vcUpdateEmbed);
     }
 
-    if(oldState.channel.parent.id == '819305275165114398' && oldState.channel.id != '818934014164467772') { // if the old channel is a custom channel
-        if(oldState.channel.members.size == 0) { // delete once it's empty
-            oldState.channel.delete(`${oldState.channel.name} was empty`)
+    // if(oldState.channel.parent.id == '819305275165114398' && oldState.channel.id != '818934014164467772') { // if the old channel is a custom channel
+    //     if(oldState.channel.members.size == 0) { // delete once it's empty
+    //         oldState.channel.delete(`${oldState.channel.name} was empty`)
             
-            const vcUpdateEmbed = new MessageEmbed()
-                .setDescription(`**${oldState.channel.name}** was deleted after being empty`)
-                .setColor(0xdf0000)
-                .setTimestamp()
-            return channel.send(vcUpdateEmbed);
-        }
-    }
+    //         const vcUpdateEmbed = new MessageEmbed()
+    //             .setDescription(`**${oldState.channel.name}** was deleted after being empty`)
+    //             .setColor(0xdf0000)
+    //             .setTimestamp()
+    //         return channel.send(vcUpdateEmbed);
+    //     }
+    // }
 }
