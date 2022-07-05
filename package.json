@@ -14,7 +14,7 @@
   "author": "Giovanni Salas",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
+    "@discordjs/opus": "^0.8.0",
     "bad-words": "^3.0.4",
     "discord.js": "^12.2.0",
     "dotenv": "^8.2.0",
